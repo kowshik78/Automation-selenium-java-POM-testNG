@@ -1,10 +1,7 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.CreateAccountPage;
-import pages.Page;
 
 import static utils.Constant.*;
 

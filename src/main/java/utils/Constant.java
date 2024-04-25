@@ -32,6 +32,6 @@ public class Constant {
             char randomChar = characters.charAt(random.nextInt(characters.length()));
             stringBuilder.append(randomChar);
         }
-        return stringBuilder.toString()+domain;
+        return stringBuilder+domain;
     }
 }

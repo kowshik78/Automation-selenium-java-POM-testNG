@@ -1,12 +1,9 @@
 package tests;
 
 import org.openqa.selenium.*;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.HomePage;
-import pages.Page;
-//import pages.Page;
 
 public class HomeTest extends BaseTest{
 

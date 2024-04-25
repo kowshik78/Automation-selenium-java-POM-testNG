@@ -3,8 +3,6 @@ package tests;
 import java.io.*;
 import java.time.Duration;
 import java.util.*;
-
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,7 +10,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.*;
 import pages.BasePage;
-import pages.HomePage;
 import pages.Page;
 import utils.ConfigProperties;
 

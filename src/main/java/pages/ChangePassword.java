@@ -17,9 +17,9 @@ public class ChangePassword extends BasePage {
     private By save_btn = By.xpath("//*[@id=\"form-validate\"]/div/div[1]/button/span");
 
     public WebElement getchangePassbtn(){return elementWithWait(changePassbtn,"clickable");}
-    public WebElement getcurrentPass(){return elementWithWait(currentPass,"presence");}
-    public WebElement getnewPass(){return elementWithWait(newPass,"presence");}
-    public WebElement getnewConfirmPass(){return elementWithWait(newConfirmPass,"presence");}
+    public WebElement getcurrentPass(){return elementWithWait(currentPass,"visibility");}
+    public WebElement getnewPass(){return elementWithWait(newPass,"visibility");}
+    public WebElement getnewConfirmPass(){return elementWithWait(newConfirmPass,"visibility");}
     public WebElement getsave_btn(){return elementWithWait(save_btn,"clickable");}
 
     private By billingAddress = By.cssSelector("a[data-ui-id='default-billing-edit-link'] span");

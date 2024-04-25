@@ -1,12 +1,9 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.ChangeBillingAddress;
 import pages.ChangePassword;
-import pages.Page;
 
 import static utils.Constant.*;
 

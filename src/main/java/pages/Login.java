@@ -15,8 +15,8 @@ public class Login extends BasePage {
     private By password = By.name("login[password]");
     private By login_btn = By.xpath("//*[@id=\"send2\"]/span");
 
-    public WebElement getName(){return elementWithWait(name,"presence");}
-    public WebElement getPassowrd(){return elementWithWait(password,"presence");}
+    public WebElement getName(){return elementWithWait(name,"visibility");}
+    public WebElement getPassowrd(){return elementWithWait(password,"visibility");}
     public WebElement getLogin_btn(){return elementWithWait(login_btn,"clickable");}
 
 }

@@ -1,43 +1,42 @@
 package pages;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.FluentWait;
-import utils.ConfigProperties;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 public abstract class Page {
 
-    private static ConfigProperties configProperties;
     WebDriver driver;
-    FluentWait wait;
-
+    FluentWait<WebDriver> wait;
     public Page(WebDriver driver) throws IOException {
         this.driver = driver;
-        wait = new FluentWait(driver);
-
-        ConfigProperties configProperties = new ConfigProperties();
-        wait.withTimeout(Duration.ofSeconds(Long.valueOf(configProperties.config.getProperty("TIMEOUT_IN_SECONDS"))));
-        wait.withTimeout(Duration.ofSeconds(Long.valueOf(configProperties.config.getProperty("POLLING_IN_MILLISECONDS"))));
-        wait.ignoring(NoSuchElementException.class);
-        wait.ignoring(TimeoutException.class);
+        wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(20))
+                .ignoring(NoSuchElementException.class)
+                .ignoring(TimeoutException.class);
     }
 
-    // Abstract Methods
-    public abstract String getPageTitle();
-    public abstract String getPageHeader(By locator);
-    public abstract WebElement getElementBy(By locator);
-    public abstract WebElement getElementBy(By locator, WebElement webElement);
-    public abstract void waitForPageTitle(String title);
-    public abstract WebElement elementWithWait(By element, String type, WebElement webElement);
+    protected abstract String getPageTitle();
+    protected abstract void waitForPageTitle(String title);
+    protected abstract void sleep(int milliseconds) throws InterruptedException;
+    protected void scrollDown(){ }
 
-    // Java Generics
+    protected abstract WebElement getElementBy(By locator);
+    protected abstract WebElement getElementBy(WebElement parent, By locator);
+    protected abstract List<WebElement> getElementsBy(By locator);
+    protected abstract List<WebElement> getElementsBy(WebElement parent, By locator);
+
+    protected abstract WebElement elementWithWait(By element, String type) ;
+    public abstract List<WebElement> elementsWithWait(By element, String type) ;
+    protected abstract void waitForElementPresent(By locator);
+    protected abstract int getSizeForCommonElements(By locator);
+
     public <TPage extends BasePage> TPage getInstance(Class<TPage> pageClass) {
         try {
             return pageClass.getDeclaredConstructor(WebDriver.class).newInstance(this.driver);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception ignored) { }
         return null;
     }
 

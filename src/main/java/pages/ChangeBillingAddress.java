@@ -19,13 +19,13 @@ public class ChangeBillingAddress extends BasePage {
     private By telephone = By.name("telephone");
     private By save_button = By.cssSelector("button[title='Save Address']");
 
-    public WebElement getbillingAddress(){return elementWithWait(billingAddress,"presence");}
-    public WebElement getstreet1(){return elementWithWait(street1,"presence");}
-    public WebElement getcity(){return elementWithWait(city,"presence");}
-    public WebElement getregion(){return elementWithWait(region,"presence");}
-    public WebElement getzip(){return elementWithWait(zip,"presence");}
-    public WebElement getcountry(){return elementWithWait(country,"presence");}
-    public WebElement gettelephone(){return elementWithWait(telephone,"presence");}
-    public WebElement getsave_button(){return elementWithWait(save_button,"clickable");}
+    public WebElement getbillingAddress(){return elementWithWait(billingAddress,"visibility");}
+    public WebElement getstreet1(){return elementWithWait(street1,"visibility");}
+    public WebElement getcity(){return elementWithWait(city,"visibility");}
+    public WebElement getregion(){return elementWithWait(region,"visibility");}
+    public WebElement getzip(){return elementWithWait(zip,"visibility");}
+    public WebElement getcountry(){return elementWithWait(country,"visibility");}
+    public WebElement gettelephone(){return elementWithWait(telephone,"visibility");}
+    public WebElement getsave_button(){return elementWithWait(save_button,"visibility");}
 
 }

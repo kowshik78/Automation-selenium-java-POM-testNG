@@ -1,13 +1,9 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeClass;
+
 import org.testng.annotations.Test;
 import pages.Login;
-import pages.Page;
-
-import static utils.Constant.loginname;
-import static utils.Constant.loginpassword;
+import static utils.Constant.*;
 
 public class LoginTest extends BaseTest {
 

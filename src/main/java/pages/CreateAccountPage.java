@@ -19,11 +19,11 @@ public class CreateAccountPage extends BasePage {
     private By Submit_btn = By.xpath("//*[@id=\"form-validate\"]/div/div[1]/button/span");
 
 
-    public WebElement getfirstName(){return elementWithWait(firstName,"presence");}
-    public WebElement getlastName(){return elementWithWait(lastName,"presence");}
-    public WebElement getemail(){return elementWithWait(email,"presence");}
-    public WebElement getpassword(){return elementWithWait(password,"presence");}
-    public WebElement getconfirmPassword(){return elementWithWait(confirmPassword,"presence");}
+    public WebElement getfirstName(){return elementWithWait(firstName,"visibility");}
+    public WebElement getlastName(){return elementWithWait(lastName,"visibility");}
+    public WebElement getemail(){return elementWithWait(email,"visibility");}
+    public WebElement getpassword(){return elementWithWait(password,"visibility");}
+    public WebElement getconfirmPassword(){return elementWithWait(confirmPassword,"visibility");}
     public WebElement getSubmit_btn(){return elementWithWait(Submit_btn,"clickable");}
 
 }
