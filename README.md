@@ -1,1 +1,1 @@
-# magneto
+# magento.softwaretestingboard.com

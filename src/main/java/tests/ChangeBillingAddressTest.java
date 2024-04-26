@@ -1,9 +1,15 @@
 package tests;
 
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import pages.ChangeBillingAddress;
 import pages.ChangePassword;
+
+import java.util.List;
+import java.util.Random;
 
 import static utils.Constant.*;
 
@@ -24,6 +30,20 @@ public class ChangeBillingAddressTest extends BaseTest {
 
         page.getInstance(ChangeBillingAddress.class).gettelephone().sendKeys(telephone);
         page.getInstance(ChangeBillingAddress.class).getsave_button().click();
-
     }
+
+    private void WebElementListHandle(WebElement drop) throws NoSuchElementException {
+        try {
+            Select select = new Select(drop);
+            List<WebElement> Types = select.getOptions();
+            int size = Types.size();
+            Random random = new Random();
+            int randomIndex = random.nextInt(size);
+            Types.get(randomIndex).click();
+        }
+        catch (TimeoutException ignored){}
+    }
+
+
+
 }

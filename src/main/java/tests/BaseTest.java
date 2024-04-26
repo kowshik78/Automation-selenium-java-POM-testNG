@@ -15,7 +15,7 @@ import utils.ConfigProperties;
 
 public class BaseTest {
     public static WebDriver driver;
-    public static String resourcesRoot = "./resources/";// Set Path f resources
+    public static String resourcesRoot = "./resources/";
     FluentWait wait;
     public static Page page;
 
@@ -60,19 +60,7 @@ public class BaseTest {
     }
 */
 
-    public void WebElementListHandle(WebElement drop) throws NoSuchElementException{
-        try {
-            Select select = new Select(drop);
-            List<WebElement> Types = select.getOptions();
-            int size = Types.size();
-            Random random = new Random();
-            int randomIndex = random.nextInt(size);
-            Types.get(randomIndex).click();
-        }
-        catch (TimeoutException ignored){}
-    }
 
-    @AfterSuite
     public void tearDown(){
         driver.quit();
     }

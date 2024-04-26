@@ -4,14 +4,28 @@
 <suite name="Framework | Project Management Test" allow-return-values="true">
     <parameter name ="browser" value="chrome"/>
 
-    <test name = "Master">
+    <test name = "Billing">
         <classes>
             <class name="tests.HomeTest"/>
+        </classes>
+    </test>
+
+<!--    <test name = "Billing with Homepage">
+        <classes>
+            <class name="tests.HomeTest">
+                <methods><include name="locatorTest"/></methods>
+            </class>
+
             <class name="tests.CreateAccountPageTest"/>
             <class name="tests.ChangePasswordTest"/>
             <class name="tests.LoginTest"/>
             <class name="tests.ChangeBillingAddressTest"/>
+
+            <class name="tests.HomeTest">
+                <methods><include name="cardTest"/></methods>
+            </class>
         </classes>
-    </test>
+    </test>-->
+
 
 </suite>
