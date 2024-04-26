@@ -15,9 +15,11 @@ public class HomePage extends BasePage{
     private By createAccountBtn = By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[3]/a");
     private By cardSelector = By.className("product-image-photo");
     private By linkSelector = By.tagName("a");
+    private By subscriberSelector = By.linkText("Subscribe");
 
     public WebElement getcreateAccountBtn(){return elementWithWait(createAccountBtn,"clickable");}
     public WebElement getCardSelector() { return elementWithWait(cardSelector,"clickable"); }
     public List<WebElement> getLinkSelector() { return elementsWithWait(linkSelector,"clickable"); }
+    public WebElement getSubscriberSelector() { return elementWithWait(subscriberSelector,"clickable"); }
 
 }

@@ -4,9 +4,10 @@
 <suite name="Framework | Project Management Test" allow-return-values="true">
     <parameter name ="browser" value="chrome"/>
 
-    <test name = "Billing">
+    <test name = "Home">
         <classes>
             <class name="tests.HomeTest"/>
+            <class name="tests.SubcriberTest"/>
         </classes>
     </test>
 

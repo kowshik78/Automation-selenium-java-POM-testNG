@@ -41,26 +41,6 @@ public class BaseTest {
         wait.withTimeout(Duration.ofSeconds(Long.valueOf(conf.config.getProperty("POLLING_IN_MILLISECONDS"))));
     }
 
-/*
-    public void popupHandle() throws NoSuchElementException {
-        try {
-            WebElement close = page.getInstance(HomePage.class).getPopupCloseBtn();
-            close.click();}
-        catch (TimeoutException ignored){}
-    }
-    public static void takeScreenshot(WebDriver webDriver, String filePath) throws Exception{
-        //Convert web driver object to TakeScreenshot
-        TakesScreenshot screenshot = ((TakesScreenshot) webDriver);
-        //Call getScreenshotAs method to create image file
-        File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
-        //Move image file to new destination
-        File destinationFile = new File(filePath);
-        //Copy file at destination
-        FileUtils.copyFile(srcFile,destinationFile);
-    }
-*/
-
-
     public void tearDown(){
         driver.quit();
     }

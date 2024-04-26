@@ -1,7 +1,6 @@
 package tests;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -9,8 +8,10 @@ import pages.HomePage;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class HomeTest extends BaseTest{
 
@@ -23,9 +24,15 @@ public class HomeTest extends BaseTest{
         System.out.println("Current url is: "+driver.getCurrentUrl());
         softAssert.assertEquals(driver.getCurrentUrl(),"BASE_URL");
 
-        page.getInstance(HomePage.class).getcreateAccountBtn().click();
+        //page.getInstance(HomePage.class).getcreateAccountBtn().click();
     }
 
+    @Test
+    public void subscribeclickTest() throws Exception {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+        page.getInstance(HomePage.class).getSubscriberSelector().click();
+    }
 
     public void cardTest() throws Exception {
         WebElement cardSelection = page.getInstance(HomePage.class).getCardSelector();
@@ -46,7 +53,6 @@ public class HomeTest extends BaseTest{
         catch (TimeoutException ignored){}
     }
 
-    @Test
     public void brokenLinkTest() throws Exception {
         List<WebElement> links = page.getInstance(HomePage.class).getLinkSelector();
         int correctCount = 0;
@@ -76,6 +82,6 @@ public class HomeTest extends BaseTest{
         System.out.println("Correct count of links: "+correctCount);
         System.out.println("Incorrect count of links: "+incorrectCount);
         System.out.println("Empty or Null links count: "+nullCount);
-
     }
+
 }

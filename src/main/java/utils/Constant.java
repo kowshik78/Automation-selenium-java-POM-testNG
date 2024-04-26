@@ -22,6 +22,8 @@ public class Constant {
 
 
 
+
+
     private static String randomGenerator(){
         String domain = "@yopmail.com";
         String characters= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
