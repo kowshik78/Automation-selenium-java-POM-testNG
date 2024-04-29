@@ -18,7 +18,7 @@ public class HomePage extends BasePage{
     private By subscriberSelector = By.linkText("Subscribe");
 
     public WebElement getcreateAccountBtn(){return elementWithWait(createAccountBtn,"clickable");}
-    public WebElement getCardSelector() { return elementWithWait(cardSelector,"clickable"); }
+    public List<WebElement> getCardSelector() { return elementsWithWait(cardSelector,"clickable"); }
     public List<WebElement> getLinkSelector() { return elementsWithWait(linkSelector,"clickable"); }
     public WebElement getSubscriberSelector() { return elementWithWait(subscriberSelector,"clickable"); }
 

@@ -1,5 +1,6 @@
 package tests;
 
+import net.bytebuddy.build.Plugin;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
@@ -23,8 +24,6 @@ public class HomeTest extends BaseTest{
         System.out.println("Page title is: "+driver.getTitle());
         System.out.println("Current url is: "+driver.getCurrentUrl());
         softAssert.assertEquals(driver.getCurrentUrl(),"BASE_URL");
-
-        //page.getInstance(HomePage.class).getcreateAccountBtn().click();
     }
 
     @Test
@@ -34,26 +33,17 @@ public class HomeTest extends BaseTest{
         page.getInstance(HomePage.class).getSubscriberSelector().click();
     }
 
+    @Test
     public void cardTest() throws Exception {
-        WebElement cardSelection = page.getInstance(HomePage.class).getCardSelector();
-        try {
-            Select select1 = new Select(cardSelection);
-            List<WebElement> elements = select1.getOptions();
-            int cardCount = elements.size();
-            Random rand = new Random();
-            int randomIndex1 = rand.nextInt(cardCount);
-            elements.get(randomIndex1).click();
-          /*
-            WebElement randomWebElement = elements.get(randomIndex);
-            String randomClassName = randomWebElement.getAttribute("class");
-            By randomLocator = By.className(randomClassName);
-            return elementWithWait(randomLocator,"clickable");
-           */
-        }
-        catch (TimeoutException ignored){}
+       List<WebElement> cards = page.getInstance(HomePage.class).getCardSelector();
+       Random rand = new Random();
+       int randomNum = rand.nextInt(cards.size());
+       cards.get(randomNum).click();
     }
 
+    @Test
     public void brokenLinkTest() throws Exception {
+        driver.get("https://magento.softwaretestingboard.com/");
         List<WebElement> links = page.getInstance(HomePage.class).getLinkSelector();
         int correctCount = 0;
         int incorrectCount = 0;

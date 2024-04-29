@@ -10,11 +10,11 @@ public class SubcriberTest extends BaseTest {
 
     @Test
     public void Subscribe() throws Exception {
-        Set<String> windows = driver.getWindowHandles();
+        //Set<String> windows = driver.getWindowHandles();
         String parent = driver.getWindowHandle();
 
-        for (String handler : windows) {
-            if (handler.equals(parent) == false) {
+        for (String handler : driver.getWindowHandles()) {
+            if (!handler.equals(parent)) {
                 driver.switchTo().window(handler);
 
                 SubcriberPage subcriberPage = page.getInstance(SubcriberPage.class);
@@ -24,6 +24,7 @@ public class SubcriberTest extends BaseTest {
                 subcriberPage.getCompanyName().sendKeys(email + firstname + lastname);
                 subcriberPage.getPosition().sendKeys(zip);
                 subcriberPage.getSubscribeBtn().click();
+                driver.close();
 
                 driver.switchTo().window(parent);
             }

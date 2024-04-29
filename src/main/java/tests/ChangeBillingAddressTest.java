@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -30,6 +31,7 @@ public class ChangeBillingAddressTest extends BaseTest {
 
         page.getInstance(ChangeBillingAddress.class).gettelephone().sendKeys(telephone);
         page.getInstance(ChangeBillingAddress.class).getsave_button().click();
+        driver.findElement(By.xpath("/html/body/div[2]/header/div[2]/a/img")).click();
     }
 
     private void WebElementListHandle(WebElement drop) throws NoSuchElementException {

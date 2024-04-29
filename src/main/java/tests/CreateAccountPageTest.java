@@ -2,6 +2,7 @@ package tests;
 
 import org.testng.annotations.Test;
 import pages.CreateAccountPage;
+import pages.HomePage;
 
 import static utils.Constant.*;
 
@@ -9,6 +10,7 @@ public class CreateAccountPageTest extends BaseTest {
 
     @Test
     public void accountRegisterTest() throws Exception {
+        page.getInstance(HomePage.class).getcreateAccountBtn().click();
         page.getInstance(CreateAccountPage.class).getfirstName().sendKeys(firstname);
         page.getInstance(CreateAccountPage.class).getlastName().sendKeys(lastname);
         page.getInstance(CreateAccountPage.class).getemail().sendKeys(email);

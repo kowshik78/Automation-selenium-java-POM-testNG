@@ -4,29 +4,47 @@
 <suite name="Framework | Project Management Test" allow-return-values="true">
     <parameter name ="browser" value="chrome"/>
 
-    <test name = "Home">
+
+    <test name = "Demo">
         <classes>
-            <class name="tests.HomeTest"/>
-            <class name="tests.SubcriberTest"/>
+            <class name="tests.HomeTest">
+                <methods>
+                    <include name="locatorTest"/>
+                    <include name="cardTest"/>
+                </methods>
+            </class>
+            <class name="tests.cartAddTest"/>
         </classes>
     </test>
 
-<!--    <test name = "Billing with Homepage">
+<!--    <test name = "Billing">
+    <classes>
+        <class name="tests.HomeTest">
+            <methods>
+                <include name="locatorTest"/>
+            </methods>
+        </class>
+        <class name="tests.CreateAccountPageTest"/>
+        <class name="tests.ChangePasswordTest"/>
+        <class name="tests.LoginTest"/>
+        <class name="tests.ChangeBillingAddressTest"/>
+    </classes>
+    </test>
+
+    <test name = "Homepage">
         <classes>
             <class name="tests.HomeTest">
-                <methods><include name="locatorTest"/></methods>
+                <methods>
+                    <include name="brokenLinkTest"/>
+                    <include name="subscribeclickTest"/>
+                </methods>
             </class>
-
-            <class name="tests.CreateAccountPageTest"/>
-            <class name="tests.ChangePasswordTest"/>
-            <class name="tests.LoginTest"/>
-            <class name="tests.ChangeBillingAddressTest"/>
-
+            <class name="tests.SubcriberTest"/>
             <class name="tests.HomeTest">
-                <methods><include name="cardTest"/></methods>
+                <methods>
+                    <include name="cardTest"/>
+                </methods>
             </class>
         </classes>
     </test>-->
-
-
 </suite>
