@@ -1,7 +1,10 @@
 package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.FluentWait;
+import tests.BaseTest;
+
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
 import java.util.List;
 
@@ -39,6 +42,5 @@ public abstract class Page {
         } catch (Exception ignored) { }
         return null;
     }
-
 
 }

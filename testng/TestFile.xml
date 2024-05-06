@@ -10,10 +10,23 @@
             <class name="tests.HomeTest">
                 <methods>
                     <include name="locatorTest"/>
-                    <include name="cardTest"/>
+                    <!--<include name="cardTest"/>-->
                 </methods>
             </class>
-            <class name="tests.cartAddTest"/>
+            <!--<class name="tests.LoginTest"/>
+            <class name="tests.cartAddTest">
+                <methods>
+                    <include name="addToCart"/>
+                    <include name="removeCart"/>
+                </methods>
+            </class>-->
+            <class name="tests.CompareListTest">
+                <methods>
+                    <include name="compareCart"/>
+                    <include name="compareProductWithTable"/>
+                    <!--<include name="print"/>-->
+                </methods>
+            </class>
         </classes>
     </test>
 

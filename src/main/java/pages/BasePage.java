@@ -18,7 +18,7 @@ public class BasePage extends Page {
     @Override
     public void waitForPageTitle(String title) {
         try {
-            wait.until(ExpectedConditions.titleContains(title));
+            wait.until(ExpectedConditions.titleIs(title));
         } catch(Exception e) {
             System.out.println("some exception occurred while waiting for "+title);
         }

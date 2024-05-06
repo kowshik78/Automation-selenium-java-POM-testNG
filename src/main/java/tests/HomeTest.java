@@ -3,6 +3,7 @@ package tests;
 import net.bytebuddy.build.Plugin;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.HomePage;
@@ -24,6 +25,7 @@ public class HomeTest extends BaseTest{
         System.out.println("Page title is: "+driver.getTitle());
         System.out.println("Current url is: "+driver.getCurrentUrl());
         softAssert.assertEquals(driver.getCurrentUrl(),"BASE_URL");
+
     }
 
     @Test
@@ -39,6 +41,7 @@ public class HomeTest extends BaseTest{
        Random rand = new Random();
        int randomNum = rand.nextInt(cards.size());
        cards.get(randomNum).click();
+       Thread.sleep(5000);
     }
 
     @Test
