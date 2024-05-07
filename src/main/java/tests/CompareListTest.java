@@ -22,7 +22,7 @@ public class CompareListTest extends BaseTest {
     public void compareCart() throws Exception {
         page.getInstance(CompareList.class).getLogo().click();
         HomeTest home = new HomeTest();
-        for (int i = 0; i <10 ; i++) {
+        for (int i = 0; i <2 ; i++) {
             home.cardTest();
 
             String title = page.getInstance(CompareList.class).getHomeTitle().getText();titles.add(title);

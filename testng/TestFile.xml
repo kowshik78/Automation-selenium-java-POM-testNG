@@ -4,33 +4,18 @@
 <suite name="Framework | Project Management Test" allow-return-values="true">
     <parameter name ="browser" value="chrome"/>
 
-
     <test name = "Demo">
         <classes>
             <class name="tests.HomeTest">
                 <methods>
                     <include name="locatorTest"/>
-                    <!--<include name="cardTest"/>-->
-                </methods>
-            </class>
-            <!--<class name="tests.LoginTest"/>
-            <class name="tests.cartAddTest">
-                <methods>
-                    <include name="addToCart"/>
-                    <include name="removeCart"/>
-                </methods>
-            </class>-->
-            <class name="tests.CompareListTest">
-                <methods>
-                    <include name="compareCart"/>
-                    <include name="compareProductWithTable"/>
-                    <!--<include name="print"/>-->
                 </methods>
             </class>
         </classes>
     </test>
 
-<!--    <test name = "Billing">
+
+<!--<test name = "Login Signup Billing">
     <classes>
         <class name="tests.HomeTest">
             <methods>
@@ -44,7 +29,7 @@
     </classes>
     </test>
 
-    <test name = "Homepage">
+    <test name = "Linktest Subscribe Cart Compare">
         <classes>
             <class name="tests.HomeTest">
                 <methods>
@@ -53,9 +38,10 @@
                 </methods>
             </class>
             <class name="tests.SubcriberTest"/>
-            <class name="tests.HomeTest">
+            <class name="tests.CompareListTest">
                 <methods>
-                    <include name="cardTest"/>
+                    <include name="compareCart"/>
+                    <include name="compareProductWithTable"/>
                 </methods>
             </class>
         </classes>

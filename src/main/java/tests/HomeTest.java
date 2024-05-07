@@ -21,6 +21,7 @@ public class HomeTest extends BaseTest{
     public void locatorTest() throws Exception {
         SoftAssert softAssert = new SoftAssert();
         JavascriptExecutor js = (JavascriptExecutor) driver;
+        loginCheck();
 
         System.out.println("Page title is: "+driver.getTitle());
         System.out.println("Current url is: "+driver.getCurrentUrl());
@@ -35,7 +36,6 @@ public class HomeTest extends BaseTest{
         page.getInstance(HomePage.class).getSubscriberSelector().click();
     }
 
-    @Test
     public void cardTest() throws Exception {
        List<WebElement> cards = page.getInstance(HomePage.class).getCardSelector();
        Random rand = new Random();

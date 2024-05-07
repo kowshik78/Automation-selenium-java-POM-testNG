@@ -8,10 +8,12 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.BasePage;
 import pages.Page;
 import utils.ConfigProperties;
+
 
 public class BaseTest {
     public static WebDriver driver;
@@ -45,4 +47,11 @@ public class BaseTest {
         driver.quit();
     }
 
+    public static void loginCheck() throws Exception {
+            LoginTest lg = new LoginTest();
+            if(driver.findElement(By.className("authorization-link")).getText().equals("Sign In")) {
+                lg.LoggedinTest();
+            }
+            else{ System.out.println("Already logged in"); }
+        }
 }
