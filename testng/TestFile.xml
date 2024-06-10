@@ -6,44 +6,39 @@
 
     <test name = "Demo">
         <classes>
-            <class name="tests.HomeTest">
-                <methods>
-                    <include name="locatorTest"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-
-
-<!--<test name = "Login Signup Billing">
-    <classes>
-        <class name="tests.HomeTest">
-            <methods>
-                <include name="locatorTest"/>
-            </methods>
-        </class>
-        <class name="tests.CreateAccountPageTest"/>
-        <class name="tests.ChangePasswordTest"/>
-        <class name="tests.LoginTest"/>
-        <class name="tests.ChangeBillingAddressTest"/>
-    </classes>
-    </test>
-
-    <test name = "Linktest Subscribe Cart Compare">
-        <classes>
-            <class name="tests.HomeTest">
-                <methods>
-                    <include name="brokenLinkTest"/>
-                    <include name="subscribeclickTest"/>
-                </methods>
-            </class>
-            <class name="tests.SubcriberTest"/>
             <class name="tests.CompareListTest">
                 <methods>
                     <include name="compareCart"/>
                     <include name="compareProductWithTable"/>
                 </methods>
             </class>
+        </classes>
+    </test>
+<!--<test name = "Login Signup Billing">
+    <classes>
+        <class name="tests.CreateAccountPageTest"/>
+        <class name="tests.ChangePasswordTest"/>
+        <class name="tests.LoginTest"/>
+        <class name="tests.ChangeBillingAddressTest"/>
+
+        <class name="tests.HomeTest">
+            <methods>
+                <include name="locatorTest"/>
+                <include name="brokenLinkTest"/>
+                <include name="subscribeclickTest"/>
+            </methods>
+        </class>
+        <class name="tests.SubcriberTest"/>
+        <class name="tests.cartAddTest"/>
+
+        <class name="tests.CompareListTest">
+            <methods>
+                <include name="compareCart"/>
+                <include name="compareProductWithTable"/>
+            </methods>
+        </class>
+        <class name="tests.RandomDropListTest"/>
+        <class name="tests.MyOrderTest"/>
         </classes>
     </test>-->
 </suite>

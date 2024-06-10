@@ -4,11 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.BasePage;
 import pages.CompareList;
-import java.awt.*;
-import java.awt.event.KeyEvent;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,7 +29,9 @@ public class CompareListTest extends BaseTest {
             String SKU = page.getInstance(CompareList.class).getHomeSKU().getText();SKUs.add(SKU);
             String Description = page.getInstance(CompareList.class).getHomeDescription().getText();Descriptions.add(Description);
             System.out.println(title);
-            page.getInstance(CompareList.class).getAddCompare().click(); Thread.sleep(2000);
+
+            WebElement w1=page.getInstance(CompareList.class).getAddCompare();
+            page.getInstance(BasePage.class).jsExecuteScript(w1);
             page.getInstance(CompareList.class).getLogo().click();
         }
         page.getInstance(CompareList.class).getHomeToCompareList().click();
@@ -40,15 +41,15 @@ public class CompareListTest extends BaseTest {
     public void compareProductWithTable() throws Exception {
         List<WebElement> tableRowUpper= driver.findElements(By.xpath("//*[@id=\"product-comparison\"]/tbody[1]/tr/td"));
 
-            List<WebElement> tableTitle = driver.findElements(By.xpath("//*[@id=\"product-comparison\"]/tbody[1]/tr/td/strong"));
-            List<WebElement> tablePrice = driver.findElements(By.xpath("//*[contains(@class, 'price-wrapper')]"));
-            List<WebElement> tableSKU = driver.findElements(By.xpath("//*[@id=\"product-comparison\"]/tbody[2]/tr[1]/td"));
-            List<WebElement> tableDescription = driver.findElements(By.xpath("//*[@id=\"product-comparison\"]/tbody[2]/tr[2]/td"));
+            List<WebElement> CompareTitle = page.getInstance(CompareList.class).getCompareTitle();
+            List<WebElement> ComparePrice = page.getInstance(CompareList.class).getComparePrice();
+            List<WebElement> CompareSKU = page.getInstance(CompareList.class).getCompareSKU();
+            List<WebElement> CompareDescription = page.getInstance(CompareList.class).getCompareDescription();
 
-            List<String> titleTexts = tableTitle.stream().map(WebElement::getText).collect(Collectors.toList());
-            List<String> priceTexts = tablePrice.stream().map(WebElement::getText).collect(Collectors.toList());
-            List<String> SKUTexts = tableSKU.stream().map(WebElement::getText).collect(Collectors.toList());
-            List<String> descriptionTexts = tableDescription.stream().map(WebElement::getText).collect(Collectors.toList());
+            List<String> titleTexts = CompareTitle.stream().map(WebElement::getText).collect(Collectors.toList());
+            List<String> priceTexts = ComparePrice.stream().map(WebElement::getText).collect(Collectors.toList());
+            List<String> SKUTexts = CompareSKU.stream().map(WebElement::getText).collect(Collectors.toList());
+            List<String> descriptionTexts = CompareDescription.stream().map(WebElement::getText).collect(Collectors.toList());
 
         for (int i = 0; i < tableRowUpper.size(); i++) {
             int closestMatchIndex = findClosestMatchIndex(titleTexts.get(i), titles);

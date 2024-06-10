@@ -10,14 +10,14 @@ public class ChangeBillingAddress extends BasePage {
         super(driver);
     }
 
-    private By billingAddress = By.cssSelector("a[data-ui-id='default-billing-edit-link'] span");
-    private By street1 = By.cssSelector("#street_1");
-    private By city = By.cssSelector("#city");
-    private By region = By.name("region_id");
-    private By zip = By.cssSelector("#zip");
-    private By country = By.name("country_id");
-    private By telephone = By.name("telephone");
-    private By save_button = By.cssSelector("button[title='Save Address']");
+    private final By billingAddress = By.cssSelector("a[data-ui-id='default-billing-edit-link'] span");
+    private final By street1 = By.cssSelector("#street_1");
+    private final By city = By.cssSelector("#city");
+    private final By region = By.name("region_id");
+    private final By zip = By.cssSelector("#zip");
+    private final By country = By.name("country_id");
+    private final By telephone = By.name("telephone");
+    private final By save_button = By.cssSelector("button[title='Save Address']");
 
     public WebElement getbillingAddress(){return elementWithWait(billingAddress,"visibility");}
     public WebElement getstreet1(){return elementWithWait(street1,"visibility");}

@@ -2,8 +2,10 @@ package pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import java.io.IOException;
 import java.util.List;
+
 
 public class BasePage extends Page {
     public BasePage(WebDriver driver) throws IOException {
@@ -34,11 +36,14 @@ public class BasePage extends Page {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("scroll(0,1000);");
     }
+    public void jsExecuteScript(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click();",element);
+    }
 
     @Override
     public WebElement getElementBy(By locator) {
-        WebElement element = null;
-        element = driver.findElement(locator);
+        WebElement element = driver.findElement(locator);
         return element;
     }
 

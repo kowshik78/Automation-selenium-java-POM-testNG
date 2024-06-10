@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+import pages.CompareList;
 import pages.cartAdd;
 
 import java.time.Duration;
@@ -14,7 +15,14 @@ import java.util.Random;
 public class cartAddTest extends BaseTest {
 
     @Test
+    public void logoTest() throws InterruptedException {
+        page.getInstance(CompareList.class).getLogo().click();
+    }
+
+    @Test
     public void addToCart() throws Exception {
+        HomeTest home = new HomeTest();
+        home.cardTest();
 
         if(!page.getInstance(cartAdd.class).getSize().isEmpty()){
             List<WebElement> dressSizes = page.getInstance(cartAdd.class).getSize();
@@ -27,10 +35,8 @@ public class cartAddTest extends BaseTest {
             dressColors.get(color).click();
 
             page.getInstance(cartAdd.class).getSubmitBtn().click();
-        } else
-        {
-            page.getInstance(cartAdd.class).getSubmitBtn().click();
         }
+        else {page.getInstance(cartAdd.class).getSubmitBtn().click();}
         Thread.sleep(5000);
     }
 

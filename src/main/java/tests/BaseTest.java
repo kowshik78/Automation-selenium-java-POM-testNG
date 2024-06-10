@@ -1,18 +1,20 @@
 package tests;
 
-import java.io.*;
-import java.time.Duration;
-import java.util.*;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 import pages.BasePage;
 import pages.Page;
 import utils.ConfigProperties;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.util.Date;
 
 
 public class BaseTest {
@@ -54,4 +56,14 @@ public class BaseTest {
             }
             else{ System.out.println("Already logged in"); }
         }
+
+    public void takeScreenshot(String stepName) {
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String destination = System.getProperty("user.dir") + "/screenshots/" + stepName + "_" + timestamp + ".png";
+        try {
+            FileUtils.copyFile(source, new File(destination));
+        } catch (IOException e) { e.printStackTrace(); }
+    }
 }

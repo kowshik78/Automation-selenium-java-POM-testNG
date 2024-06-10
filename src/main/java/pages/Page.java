@@ -1,10 +1,9 @@
 package pages;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.FluentWait;
-import tests.BaseTest;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
 import java.util.List;
 
@@ -25,6 +24,7 @@ public abstract class Page {
     protected abstract void waitForPageTitle(String title);
     protected abstract void sleep(int milliseconds) throws InterruptedException;
     protected void scrollDown(){ }
+    protected abstract void jsExecuteScript(WebElement el);
 
     protected abstract WebElement getElementBy(By locator);
     protected abstract WebElement getElementBy(WebElement parent, By locator);

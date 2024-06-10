@@ -1,9 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -11,21 +11,21 @@ public class CompareList extends BasePage{
     public CompareList(WebDriver driver) throws IOException {
         super(driver);
     }
-    private By addCompare= By.xpath("//a[@class='action tocompare']");
-    private By compareList=By.xpath("//a[text()='comparison list']");
-    private By homeToCompareList=By.xpath("/html/body/div[2]/header/div[2]/ul/li/a");
-    private By logo=By.xpath("//a[@class='logo']");
-    private By printButton=By.xpath("//*[text()='Print This Page']");
+    private final By addCompare= By.xpath("//*[@class=\"product-addto-links\"]//a[2]");
+    private final By compareList=By.xpath("//a[text()='comparison list']");
+    private final By homeToCompareList=By.xpath("/html/body/div[2]/header/div[2]/ul/li/a");
+    private final By logo=By.xpath("//a[@class='logo']");
+    private final By printButton=By.xpath("//*[text()='Print This Page']");
 
-    private By homeTitle=By.cssSelector("div > h1 > span");
-    private By homePrice=By.className("price");
-    private By homeSKU=By.className("value");
-    private By homeDescription=By.cssSelector("#description > div");
+    private final By homeTitle=By.cssSelector("div > h1 > span");
+    private final By homePrice=By.className("price");
+    private final By homeSKU=By.className("value");
+    private final By homeDescription=By.cssSelector("#description > div");
 
-    private By compareTitle=By.xpath("//strong/a[text()]");
-    private By comparePrice=By.className("price");
-    private By compareSKU=By.xpath("//*[@id=\"product-comparison\"]/tbody[2]/tr[1]/td");
-    private By compareDescription=By.xpath("//*[@id=\"product-comparison\"]/tbody[2]/tr[2]/td");
+    private final By compareTitle=By.xpath("//*[@id=\"product-comparison\"]/tbody[1]/tr/td/strong");
+    private final By comparePrice=By.xpath("//*[contains(@class, 'price-wrapper')]");
+    private final By compareSKU=By.xpath("//*[@id=\"product-comparison\"]/tbody[2]/tr[1]/td");
+    private final By compareDescription=By.xpath("//*[@id=\"product-comparison\"]/tbody[2]/tr[2]/td");
 
 
     public WebElement getAddCompare(){return elementWithWait(addCompare,"clickable");}

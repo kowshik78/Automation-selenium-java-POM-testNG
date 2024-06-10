@@ -11,9 +11,9 @@ public class Login extends BasePage {
         super(driver);
     }
 
-    private By name = By.name("login[username]");
-    private By password = By.name("login[password]");
-    private By login_btn = By.xpath("//*[@id=\"send2\"]/span");
+    private final By name = By.name("login[username]");
+    private final By password = By.name("login[password]");
+    private final By login_btn = By.xpath("//*[@id=\"send2\"]/span");
 
     public WebElement getName(){return elementWithWait(name,"visibility");}
     public WebElement getPassowrd(){return elementWithWait(password,"visibility");}

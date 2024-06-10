@@ -11,12 +11,12 @@ public class SubcriberPage extends BasePage {
         super(driver);
     }
 
-    private By email = By.xpath("//*[@id=\"mce-EMAIL\"]");
-    private By firstName = By.id("mce-FNAME");
-    private By lastName = By.id("mce-LNAME");
-    private By companyName = By.id("mce-COMPANY");
-    private By position = By.id("mce-POSITION");
-    private By subscribe_btn = By.id("mc-embedded-subscribe");
+    private final By email = By.xpath("//*[@id=\"mce-EMAIL\"]");
+    private final By firstName = By.id("mce-FNAME");
+    private final By lastName = By.id("mce-LNAME");
+    private final By companyName = By.id("mce-COMPANY");
+    private final By position = By.id("mce-POSITION");
+    private final By subscribe_btn = By.id("mc-embedded-subscribe");
 
     public WebElement getEmail(){return elementWithWait(email,"visibility");}
     public WebElement getFirstName(){return elementWithWait(firstName,"visibility");}

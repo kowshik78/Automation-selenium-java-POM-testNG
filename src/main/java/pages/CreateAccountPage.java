@@ -11,12 +11,12 @@ public class CreateAccountPage extends BasePage {
         super(driver);
     }
 
-    private By firstName = By.name("firstname");
-    private By lastName = By.name("lastname");
-    private By email = By.name("email");
-    private By password = By.name("password");
-    private By confirmPassword = By.name("password_confirmation");
-    private By Submit_btn = By.xpath("//*[@id=\"form-validate\"]/div/div[1]/button/span");
+    private final By firstName = By.name("firstname");
+    private final By lastName = By.name("lastname");
+    private final By email = By.name("email");
+    private final By password = By.name("password");
+    private final By confirmPassword = By.name("password_confirmation");
+    private final By Submit_btn = By.xpath("//*[@id=\"form-validate\"]/div/div[1]/button/span");
 
 
     public WebElement getfirstName(){return elementWithWait(firstName,"visibility");}

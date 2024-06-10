@@ -3,24 +3,20 @@ package tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.Login;
 
 import java.util.Objects;
 
-import static utils.Constant.*;
+import static utils.Constant.loginname;
+import static utils.Constant.loginpassword;
 
 public class LoginTest extends BaseTest {
-    public static boolean status;
+    public boolean status;
 
     @Test
     public void LoggedinTest() throws Exception {
-        if(Objects.equals(driver.getCurrentUrl(), "https://magento.softwaretestingboard.com/customer/account/login/")) {
-            status = true;
-        }
-        else { status = false;}
+        status = Objects.equals(driver.getCurrentUrl(), "https://magento.softwaretestingboard.com/customer/account/login/");
         if(!status){
             WebElement wl=driver.findElement(By.className("authorization-link"));
             wl.click();
