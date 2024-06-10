@@ -32,7 +32,7 @@ public class BaseTest {
 
         if (browser.equals("chrome")){
             //WebDriverManager.chromedriver().setup();
-            System.setProperty("webdriver.chrome.driver",resourcesRoot+"drivers\\chromedriver_124.exe");
+            System.setProperty("webdriver.chrome.driver",resourcesRoot+"drivers\\chromedriver_125.exe");
             driver = new ChromeDriver();
             System.out.println("Chrome Browser is Selected");
         }
