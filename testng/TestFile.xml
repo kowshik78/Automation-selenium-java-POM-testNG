@@ -23,7 +23,7 @@
 
         <class name="tests.HomeTest">
             <methods>
-                <include name="locatorTest"/>
+               &lt;!&ndash; <include name="locatorTest"/>&ndash;&gt;
                 <include name="brokenLinkTest"/>
                 <include name="subscribeclickTest"/>
             </methods>

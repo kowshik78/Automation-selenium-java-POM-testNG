@@ -22,6 +22,7 @@ public class CompareList extends BasePage{
     private final By homeSKU=By.className("value");
     private final By homeDescription=By.cssSelector("#description > div");
 
+    private final By tableRowUpper=By.xpath("//*[@id=\"product-comparison\"]/tbody[1]/tr/td");
     private final By compareTitle=By.xpath("//*[@id=\"product-comparison\"]/tbody[1]/tr/td/strong");
     private final By comparePrice=By.xpath("//*[contains(@class, 'price-wrapper')]");
     private final By compareSKU=By.xpath("//*[@id=\"product-comparison\"]/tbody[2]/tr[1]/td");
@@ -34,11 +35,12 @@ public class CompareList extends BasePage{
     public WebElement getLogo(){return elementWithWait(logo,"clickable");}
     public WebElement getPrintButton(){return elementWithWait(printButton,"clickable");}
 
-    public WebElement getHomeTitle(){return elementWithWait(homeTitle,"clickable");}
-    public WebElement getHomePrice(){return elementWithWait(homePrice,"clickable");}
-    public WebElement getHomeSKU(){return elementWithWait(homeSKU,"clickable");}
-    public WebElement getHomeDescription(){return elementWithWait(homeDescription,"clickable");}
+    public List<WebElement> getHomeTitle(){return elementsWithWait(homeTitle,"clickable");}
+    public List<WebElement> getHomePrice(){return elementsWithWait(homePrice,"clickable");}
+    public List<WebElement> getHomeSKU(){return elementsWithWait(homeSKU,"clickable");}
+    public List<WebElement> getHomeDescription(){return elementsWithWait(homeDescription,"clickable");}
 
+    public List<WebElement> getTableRowUpper(){return elementsWithWait(tableRowUpper,"clickable");}
     public List<WebElement> getCompareTitle(){return elementsWithWait(compareTitle,"clickable");}
     public List<WebElement> getComparePrice(){return elementsWithWait(comparePrice,"clickable");}
     public List<WebElement> getCompareSKU(){return elementsWithWait(compareSKU,"clickable");}
