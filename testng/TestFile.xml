@@ -3,9 +3,9 @@
 
 <suite name="AllureTestSuite">
     <parameter name ="browser" value="chrome"/>
-    <listeners>
+   <!-- <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
-    </listeners>
+    </listeners>-->
 
     <test name = "Demo">
         <classes>
