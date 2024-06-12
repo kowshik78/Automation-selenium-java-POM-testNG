@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -11,18 +12,22 @@ public class cartAdd extends BasePage {
         super(driver);
     }
 
-    private final By size = By.cssSelector("div.swatch-option.text");
-    private final By color = By.cssSelector("div.swatch-option.color");
-    private final By submitBtn= By.id("product-addtocart-button");
-    private final By cartButton= By.xpath("/html/body/div[2]/header/div[2]/div[1]/a");
-    private final By productDelete= By.xpath("//*[@title='Remove item']");
-    private final By alertConfirm= By.xpath("/html/body/div[4]/aside[2]/div[2]/footer/button[2]");
+    private final By product = By.className("inventory_item_name");
+    private final By cart = By.name("add-to-cart");
+    private final By name = By.xpath("//*[@id=\"inventory_item_container\"]//div[2]/div[1]");
+    private final By price = By.className("inventory_details_price");
+    private final By cartPage = By.className("shopping_cart_link");
+    private final By compareTitle=By.className("inventory_item_name");
+    private final By comparePrice=By.className("inventory_item_price");
+    private final By checkout=By.id("checkout");
 
-    public List<WebElement> getSize(){return elementsWithWait(size,"visibility");}
-    public List<WebElement> getColor(){return elementsWithWait(color,"visibility");}
-    public WebElement getSubmitBtn(){return elementWithWait(submitBtn,"visibility");}
-    public WebElement getcartButton(){return elementWithWait(cartButton,"clickable");}
-    public List<WebElement> getproductdelete(){return elementsWithWait(productDelete,"clickable");}
-    public WebElement getAlertConfirm(){return elementWithWait(alertConfirm,"clickable");}
+    public List<WebElement> getProduct(){return elementsWithWait(product,"clickable");}
+    public WebElement getCart(){return elementWithWait(cart,"clickable");}
+    public List<WebElement> getName(){return elementsWithWait(name,"clickable");}
+    public List<WebElement> getPrice(){return elementsWithWait(price,"clickable");}
+    public WebElement getCartPage(){return elementWithWait(cartPage,"clickable");}
+    public List<WebElement> getCompareTitle(){return elementsWithWait(compareTitle,"clickable");}
+    public List<WebElement> getComparePrice(){return elementsWithWait(comparePrice,"clickable");}
+    public WebElement getCheckout(){return elementWithWait(checkout,"clickable");}
 
 }

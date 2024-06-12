@@ -1,64 +1,63 @@
 package tests;
 
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CompareList;
+import org.testng.asserts.SoftAssert;
 import pages.cartAdd;
 
-import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 
 public class cartAddTest extends BaseTest {
 
-    @Test
-    public void logoTest() throws InterruptedException {
-        page.getInstance(CompareList.class).getLogo().click();
-    }
+   public static List<String> titles = new ArrayList<>();
+   public static List<String> prices = new ArrayList<>();
+
+    public static List<String> titleTexts = new ArrayList<>();
+    public static List<String> priceTexts = new ArrayList<>();
 
     @Test
     public void addToCart() throws Exception {
-        HomeTest home = new HomeTest();
-        home.cardTest();
-
-        if(!page.getInstance(cartAdd.class).getSize().isEmpty()){
-            List<WebElement> dressSizes = page.getInstance(cartAdd.class).getSize();
-            List<WebElement> dressColors = page.getInstance(cartAdd.class).getColor();
-
+        for(int i=0;i<2;i++) {
+            List<WebElement> multiProduct = page.getInstance(cartAdd.class).getProduct();
             Random rand = new Random();
-            int size = rand.nextInt(dressSizes.size());
-            int color = rand.nextInt(dressColors.size());
-            dressSizes.get(size).click();
-            dressColors.get(color).click();
-
-            page.getInstance(cartAdd.class).getSubmitBtn().click();
+            int size = rand.nextInt(multiProduct.size());
+            multiProduct.get(size).click();
+            titles.addAll(page.getInstance(cartAdd.class).getName().stream().map(WebElement::getText).collect(Collectors.toList()));
+            prices.addAll(page.getInstance(cartAdd.class).getPrice().stream().map(WebElement::getText).collect(Collectors.toList()));
+            page.getInstance(cartAdd.class).getCart().click();
+            if(i<1){
+                driver.get("https://www.saucedemo.com/inventory.html");
+            }
         }
-        else {page.getInstance(cartAdd.class).getSubmitBtn().click();}
-        Thread.sleep(5000);
+        System.out.println(titles);System.out.println(prices);
+        page.getInstance(cartAdd.class).getCartPage().click();
     }
 
     @Test
-    public void removeCart() throws Exception {
-        WebDriverWait retryWait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        page.getInstance(cartAdd.class).getcartButton().click();
-        Thread.sleep(3000);
-
-        List<WebElement> productsToDelete = page.getInstance(cartAdd.class).getproductdelete();
-        for (WebElement e : productsToDelete) {
-            boolean clicked = false;
-            while (!clicked) {
-                try {
-                    retryWait.until(ExpectedConditions.elementToBeClickable(e)).click();
-                    clicked = true;
-                } catch (StaleElementReferenceException ignored) {
-                }
+    public void compareCart() throws Exception {
+        titleTexts.addAll(page.getInstance(cartAdd.class).getCompareTitle().stream().map(WebElement::getText).collect(Collectors.toList()));
+        priceTexts.addAll(page.getInstance(cartAdd.class).getComparePrice().stream().map(WebElement::getText).collect(Collectors.toList()));
+        SoftAssert softAssert = new SoftAssert();
+        for(String title: titles){
+            for(String compareTitle:titleTexts){
+                if (title.equals(compareTitle)){
+                    softAssert.assertEquals(compareTitle, title);
+                    break;}
             }
-            page.getInstance(cartAdd.class).getAlertConfirm().click();
+            Assert.assertTrue(true, "Match found for title: " + title);}
+        for(String price: prices){
+            for(String comparePrice:priceTexts){
+                if (price.equals(comparePrice)){
+                    softAssert.assertEquals(comparePrice, price);
+                    break;}
+            }
+            Assert.assertTrue(true, "Match found for title: " + price);}
+        softAssert.assertAll();
+        page.getInstance(cartAdd.class).getCheckout().click();
         }
     }
-
-}

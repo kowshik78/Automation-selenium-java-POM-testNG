@@ -1,44 +1,17 @@
 <?xml version= "1.0" encoding= "UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Framework | Project Management Test" allow-return-values="true">
+<suite name="AllureTestSuite">
     <parameter name ="browser" value="chrome"/>
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
 
     <test name = "Demo">
         <classes>
-            <class name="tests.CompareListTest">
-                <methods>
-                    <include name="compareCart"/>
-                    <include name="compareProductWithTable"/>
-                </methods>
-            </class>
+            <class name="tests.LoginTest"/>
+            <class name="tests.cartAddTest"/>
+            <class name="tests.CheckoutTest"/>
         </classes>
     </test>
-<!--<test name = "Login Signup Billing">
-    <classes>
-        <class name="tests.CreateAccountPageTest"/>
-        <class name="tests.ChangePasswordTest"/>
-        <class name="tests.LoginTest"/>
-        <class name="tests.ChangeBillingAddressTest"/>
-
-        <class name="tests.HomeTest">
-            <methods>
-               &lt;!&ndash; <include name="locatorTest"/>&ndash;&gt;
-                <include name="brokenLinkTest"/>
-                <include name="subscribeclickTest"/>
-            </methods>
-        </class>
-        <class name="tests.SubcriberTest"/>
-        <class name="tests.cartAddTest"/>
-
-        <class name="tests.CompareListTest">
-            <methods>
-                <include name="compareCart"/>
-                <include name="compareProductWithTable"/>
-            </methods>
-        </class>
-        <class name="tests.RandomDropListTest"/>
-        <class name="tests.MyOrderTest"/>
-        </classes>
-    </test>-->
 </suite>

@@ -3,8 +3,10 @@ import java.util.Random;
 
 public class Constant {
 
-    public final static String firstname = "FIRST";
-    public final static String lastname = "LAST";
+    public final static String firstname = randomGenerator();
+    public final static String lastname = randomGenerator();
+    public final static String Zip = "1900";
+
     public final static String email = randomGenerator();
     public final static String password = "1qazZAQ!";
     public final static String confirmpassword = password;
@@ -12,13 +14,15 @@ public class Constant {
     public final static String currentpassword = "1qazZAQ!";
     public final static String newpassword = "1qazZAQ!!";
 
-    public final static String loginname = email;
-    public final static String loginpassword = newpassword;
+    public final static String loginname = "standard_user";
+    public final static String loginpassword = "secret_sauce";
 
     public final static String street1 = "demo2";
     public final static String city = "Dhaka";
     public final static String zip = "1900";
     public final static String telephone = "1234567890";
+
+
 
 
 
