@@ -3,18 +3,16 @@
 
 <suite name="Framework | Project Management Test" allow-return-values="true">
     <parameter name ="browser" value="chrome"/>
-
-    <test name = "Demo">
+<listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+   <!-- <test name = "Demo">
         <classes>
-            <class name="tests.CompareListTest">
-                <methods>
-                    <include name="compareCart"/>
-                    <include name="compareProductWithTable"/>
-                </methods>
-            </class>
+            <class name="tests.CompareListTest"/>
+            <class name="tests.RandomDropListTest"/>
         </classes>
-    </test>
-<!--<test name = "Login Signup Billing">
+    </test>-->
+<test name = "Login Signup Billing">
     <classes>
         <class name="tests.CreateAccountPageTest"/>
         <class name="tests.ChangePasswordTest"/>
@@ -23,8 +21,8 @@
 
         <class name="tests.HomeTest">
             <methods>
-               &lt;!&ndash; <include name="locatorTest"/>&ndash;&gt;
-                <include name="brokenLinkTest"/>
+                <include name="locatorTest"/>
+                <!--<include name="brokenLinkTest"/>-->
                 <include name="subscribeclickTest"/>
             </methods>
         </class>
@@ -40,5 +38,5 @@
         <class name="tests.RandomDropListTest"/>
         <class name="tests.MyOrderTest"/>
         </classes>
-    </test>-->
+    </test>
 </suite>

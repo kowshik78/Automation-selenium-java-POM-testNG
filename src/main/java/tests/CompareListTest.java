@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -16,6 +18,8 @@ public class CompareListTest extends BaseTest {
     public static List<String> SKUs = new ArrayList<>();
     public static List<String> Descriptions = new ArrayList<>();
 
+    @Step("Test case 001")
+    @Description
     @Test
     public void compareCart() throws Exception {
         page.getInstance(CompareList.class).getLogo().click();
@@ -34,6 +38,8 @@ public class CompareListTest extends BaseTest {
         page.getInstance(CompareList.class).getHomeToCompareList().click();
     }
 
+    @Step("Test case 002")
+    @Description
     @Test
     public void compareProductWithTable() throws Exception {
         List<WebElement> tableRowUpper= page.getInstance(CompareList.class).getTableRowUpper();

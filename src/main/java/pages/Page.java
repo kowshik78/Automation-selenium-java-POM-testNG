@@ -33,6 +33,10 @@ public abstract class Page {
 
     protected abstract WebElement elementWithWait(By element, String type) ;
     public abstract List<WebElement> elementsWithWait(By element, String type) ;
+
+    public abstract WebElement elementWithWait(WebElement element, String type);
+    public abstract List<WebElement> elementsWithWait(List<WebElement> elements, String type);
+
     protected abstract void waitForElementPresent(By locator);
     protected abstract int getSizeForCommonElements(By locator);
 

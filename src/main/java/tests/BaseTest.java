@@ -1,8 +1,13 @@
 package tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
@@ -31,9 +36,11 @@ public class BaseTest {
         String url = conf.config.getProperty("BASE_URL");
 
         if (browser.equals("chrome")){
-            //WebDriverManager.chromedriver().setup();
-            System.setProperty("webdriver.chrome.driver",resourcesRoot+"drivers\\chromedriver_125.exe");
-            driver = new ChromeDriver();
+            WebDriverManager.chromedriver().setup();
+            //System.setProperty("webdriver.chrome.driver",resourcesRoot+"drivers\\chromedriver_126.exe");
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless");
+            driver = new ChromeDriver(); //remove options to remove headless
             System.out.println("Chrome Browser is Selected");
         }
 
@@ -48,6 +55,7 @@ public class BaseTest {
     public void tearDown(){
         driver.quit();
     }
+
 
     public static void loginCheck() throws Exception {
             LoginTest lg = new LoginTest();

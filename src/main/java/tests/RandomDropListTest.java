@@ -27,23 +27,23 @@
             itemChoose();*/
         }
         public void itemChoose() throws Exception {
-            cAdd.addToCart();takeScreenshot("Hello");
-            page.getInstance(RandomDropList.class).getCartButton().click();takeScreenshot("Hello");
-            Thread.sleep(10000);
+            cAdd.addToCart();
+            WebElement cartButton=page.getInstance(RandomDropList.class).getCartButton();takeScreenshot("Hello");
+            page.getInstance(RandomDropList.class).jsExecuteScript(cartButton);
             WebElement proceedButton= page.getInstance(RandomDropList.class).getProceedButton();
             page.getInstance(BasePage.class).jsExecuteScript(proceedButton);
 
-            page.getInstance(RandomDropList.class).getBillingNextButton().click();
-            Thread.sleep(10000);
-            takeScreenshot("Hello");
-            WebElement w1= page.getInstance(RandomDropList.class).geCheckoutPrice(); s1=w1.getText();
+            WebElement billingButton=page.getInstance(RandomDropList.class).getBillingNextButton();takeScreenshot("Hello");
+            page.getInstance(BasePage.class).jsExecuteScript(billingButton);
+            WebElement w1= page.getInstance(RandomDropList.class).geCheckoutPrice();s1=w1.getText();
             System.out.println(s1);
 
-            Thread.sleep(10000);
-            page.getInstance(RandomDropList.class).getPlcaeOrderButton().click();takeScreenshot("Hello");
-            Thread.sleep(10000);
-            WebElement w2= page.getInstance(RandomDropList.class).getpurchaseNumber(); s2=w2.getText();
+            WebElement placeOrderButton=page.getInstance(RandomDropList.class).getPlcaeOrderButton();takeScreenshot("Hello");
+            page.getInstance(BasePage.class).jsExecuteScript(placeOrderButton);
+            WebElement w2= page.getInstance(RandomDropList.class).getpurchaseNumber();s2=w2.getText();
             System.out.println(s2);
-            page.getInstance(RandomDropList.class).getContinueShopping().click();
+
+            WebElement continueShoppingButton=page.getInstance(RandomDropList.class).getContinueShopping();
+            page.getInstance(BasePage.class).jsExecuteScript(continueShoppingButton);
         }
     }

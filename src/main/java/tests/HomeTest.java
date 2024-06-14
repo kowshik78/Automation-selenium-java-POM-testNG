@@ -17,8 +17,6 @@ public class HomeTest extends BaseTest{
     public void locatorTest() throws Exception {
         SoftAssert softAssert = new SoftAssert();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        loginCheck();
-
         System.out.println("Page title is: "+driver.getTitle());
         System.out.println("Current url is: "+driver.getCurrentUrl());
         softAssert.assertEquals(driver.getCurrentUrl(),"BASE_URL");

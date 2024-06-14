@@ -37,7 +37,7 @@ public class RandomDropList extends BasePage{
 
     private final By cartButton=By.xpath("//*[text()=\"shopping cart\"]");
     private final By proceedButton=By.xpath("//*[@id=\"maincontent\"]//ul/li[1]/button");
-    private final By billingNextButton=By.xpath("//*[@class=\"button action continue primary\"]/span[1]");
+    private final By billingNextButton=By.xpath("//*[@class=\"button action continue primary\"]");
     private final By plcaeOrderButton=By.xpath("//*[text()=\"Place Order\"]");
     private final By thanksText=By.xpath("//*[@class=\"base\" and text()=\"Thank you for your purchase!\"]");
     private final By continueShopping=By.xpath("//*[contains(text(),\"Continue Shopping\")]");
@@ -49,7 +49,7 @@ public class RandomDropList extends BasePage{
     public WebElement getThanksText() {return elementWithWait(thanksText,"clickable");}
     public WebElement getContinueShopping() {return elementWithWait(continueShopping,"clickable");}
 
-    private final By checkoutPrice=By.cssSelector("#opc-sidebar > div.opc-block-summary > table > tbody > tr.grand.totals > td > strong > span");
+    private final By checkoutPrice=By.cssSelector("#opc-sidebar > div.opc-block-summary > table > tbody > tr.grand.totals > td > strong");
     private final By purchaseNumber=By.xpath("//*[@class=\"checkout-success\"]/p/a/strong");
 
     public WebElement geCheckoutPrice() {return elementWithWait(checkoutPrice,"clickable");}

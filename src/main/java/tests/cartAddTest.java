@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+import pages.BasePage;
 import pages.CompareList;
 import pages.cartAdd;
 
@@ -25,19 +26,19 @@ public class cartAddTest extends BaseTest {
         HomeTest home = new HomeTest();
         home.cardTest();
 
-        if(!page.getInstance(cartAdd.class).getSize().isEmpty()){
-            List<WebElement> dressSizes = page.getInstance(cartAdd.class).getSize();
-            List<WebElement> dressColors = page.getInstance(cartAdd.class).getColor();
-
+        try{
+            List<WebElement> dressSizes=page.getInstance(cartAdd.class).getSize();
+            List<WebElement> dressColors=page.getInstance(cartAdd.class).getColor();
             Random rand = new Random();
             int size = rand.nextInt(dressSizes.size());
             int color = rand.nextInt(dressColors.size());
-            dressSizes.get(size).click();
-            dressColors.get(color).click();
 
-            page.getInstance(cartAdd.class).getSubmitBtn().click();
+            page.getInstance(BasePage.class).jsExecuteScript(dressSizes.get(size));
+            page.getInstance(BasePage.class).jsExecuteScript(dressColors.get(color));
+            page.getInstance(cartAdd.class).getAddtoCartBtn().click();
         }
-        else {page.getInstance(cartAdd.class).getSubmitBtn().click();}
+        catch(Exception e)
+        {page.getInstance(cartAdd.class).getAddtoCartBtn().click();}
         Thread.sleep(5000);
     }
 
