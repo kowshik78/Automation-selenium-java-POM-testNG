@@ -1,31 +1,34 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 import java.io.IOException;
 
 public class ChangeBillingAddress extends BasePage {
+
+    @FindBy(css = "a[data-ui-id='default-billing-edit-link'] span") private WebElement billingAddress;
+    @FindBy(css = "#street_1") private WebElement street1;
+    @FindBy(css = "#city") private WebElement city;
+    @FindBy(name = "region_id") private WebElement region;
+    @FindBy(css = "#zip") private WebElement zip;
+    @FindBy(name = "country_id") private WebElement country;
+    @FindBy(name = "telephone") private WebElement telephone;
+    @FindBy(css = "button[title='Save Address']") private WebElement saveButton;
+
     public ChangeBillingAddress(WebDriver driver) throws IOException {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    private final By billingAddress = By.cssSelector("a[data-ui-id='default-billing-edit-link'] span");
-    private final By street1 = By.cssSelector("#street_1");
-    private final By city = By.cssSelector("#city");
-    private final By region = By.name("region_id");
-    private final By zip = By.cssSelector("#zip");
-    private final By country = By.name("country_id");
-    private final By telephone = By.name("telephone");
-    private final By save_button = By.cssSelector("button[title='Save Address']");
-
-    public WebElement getbillingAddress(){return elementWithWait(billingAddress,"visibility");}
-    public WebElement getstreet1(){return elementWithWait(street1,"visibility");}
-    public WebElement getcity(){return elementWithWait(city,"visibility");}
-    public WebElement getregion(){return elementWithWait(region,"clickable");}
-    public WebElement getzip(){return elementWithWait(zip,"visibility");}
-    public WebElement getcountry(){return elementWithWait(country,"clickable");}
-    public WebElement gettelephone(){return elementWithWait(telephone,"visibility");}
-    public WebElement getsave_button(){return elementWithWait(save_button,"visibility");}
-
+    public WebElement getBillingAddress() {return elementWithWait(billingAddress, "visibility");}
+    public WebElement getStreet1() {return elementWithWait(street1, "visibility");}
+    public WebElement getCity() {return elementWithWait(city, "visibility");}
+    public WebElement getRegion() {return elementWithWait(region, "clickable");}
+    public WebElement getZip() {return elementWithWait(zip, "visibility");}
+    public WebElement getCountry() {return elementWithWait(country, "clickable");}
+    public WebElement getTelephone() {return elementWithWait(telephone, "visibility");}
+    public WebElement getSaveButton() {return elementWithWait(saveButton, "visibility");}
 }

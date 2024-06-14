@@ -1,29 +1,31 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 import java.io.IOException;
 
 public class ChangePassword extends BasePage {
+
+    @FindBy(xpath = "//*[contains(@class,'action change-password')]") private WebElement changePassBtn;
+    @FindBy(name = "current_password") private WebElement currentPass;
+    @FindBy(name = "password") private WebElement newPass;
+    @FindBy(name = "password_confirmation") private WebElement newConfirmPass;
+    @FindBy(xpath = "//*[@id='form-validate']/div/div[1]/button/span") private WebElement saveBtn;
+
+    @FindBy(css = "a[data-ui-id='default-billing-edit-link'] span") private WebElement billingAddress;
+
     public ChangePassword(WebDriver driver) throws IOException {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    private final By changePassbtn = By.xpath("//*[contains(@class,\"action change-password\")]");
-    private final By currentPass = By.name("current_password");
-    private final By newPass = By.name("password");
-    private final By newConfirmPass = By.name("password_confirmation");
-    private final By save_btn = By.xpath("//*[@id=\"form-validate\"]/div/div[1]/button/span");
-
-    public WebElement   getchangePassbtn(){return elementWithWait(changePassbtn,"clickable");}
-    public WebElement getcurrentPass(){return elementWithWait(currentPass,"visibility");}
-    public WebElement getnewPass(){return elementWithWait(newPass,"visibility");}
-    public WebElement getnewConfirmPass(){return elementWithWait(newConfirmPass,"visibility");}
-    public WebElement getsave_btn(){return elementWithWait(save_btn,"clickable");}
-
-    private final By billingAddress = By.cssSelector("a[data-ui-id='default-billing-edit-link'] span");
-    public WebElement getbillingAddress(){return elementWithWait(billingAddress,"clickable");}
-
-
+    public WebElement getChangePassBtn() {return elementWithWait(changePassBtn, "clickable");}
+    public WebElement getCurrentPass() {return elementWithWait(currentPass, "visibility");}
+    public WebElement getNewPass() {return elementWithWait(newPass, "visibility");}
+    public WebElement getNewConfirmPass() {return elementWithWait(newConfirmPass, "visibility");}
+    public WebElement getSaveBtn() {return elementWithWait(saveBtn, "clickable");}
+    public WebElement getBillingAddress() {return elementWithWait(billingAddress, "clickable");}
 }

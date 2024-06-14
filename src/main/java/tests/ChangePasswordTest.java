@@ -9,11 +9,11 @@ public class ChangePasswordTest extends BaseTest {
 
     @Test
     public void changingPassTest() throws Exception {
-        page.getInstance(ChangePassword.class).getchangePassbtn().click();
-        page.getInstance(ChangePassword.class).getcurrentPass().sendKeys(currentpassword);
-        page.getInstance(ChangePassword.class).getnewPass().sendKeys(newpassword);
-        page.getInstance(ChangePassword.class).getnewConfirmPass().sendKeys(newpassword);
-        page.getInstance(ChangePassword.class).getsave_btn().click();
+        page.getInstance(ChangePassword.class).getChangePassBtn().click();
+        page.getInstance(ChangePassword.class).getCurrentPass().sendKeys(currentpassword);
+        page.getInstance(ChangePassword.class).getNewPass().sendKeys(newpassword);
+        page.getInstance(ChangePassword.class).getNewConfirmPass().sendKeys(newpassword);
+        page.getInstance(ChangePassword.class).getSaveBtn().click();
     }
 
 }

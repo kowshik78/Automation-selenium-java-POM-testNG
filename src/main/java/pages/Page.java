@@ -1,11 +1,13 @@
 package pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.FluentWait;
 
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+
 
 public abstract class Page {
 
@@ -18,6 +20,8 @@ public abstract class Page {
                 .pollingEvery(Duration.ofSeconds(20))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(TimeoutException.class);
+        PageFactory.initElements(driver, this);
+
     }
 
     protected abstract String getPageTitle();

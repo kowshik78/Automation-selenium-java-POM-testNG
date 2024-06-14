@@ -21,13 +21,13 @@ public class LoginTest extends BaseTest {
             WebElement wl=driver.findElement(By.className("authorization-link"));
             wl.click();
             page.getInstance(Login.class).getName().sendKeys("dd@yopmail.com");
-            page.getInstance(Login.class).getPassowrd().sendKeys("Ksl@12345");
-            page.getInstance(Login.class).getLogin_btn().click();
+            page.getInstance(Login.class).getPassword().sendKeys("Ksl@12345");
+            page.getInstance(Login.class).getLoginBtn().click();
         }
         else {
             page.getInstance(Login.class).getName().sendKeys(loginname);
-            page.getInstance(Login.class).getPassowrd().sendKeys(loginpassword);
-            page.getInstance(Login.class).getLogin_btn().click();
+            page.getInstance(Login.class).getPassword().sendKeys(loginpassword);
+            page.getInstance(Login.class).getLoginBtn().click();
 
         }
     }

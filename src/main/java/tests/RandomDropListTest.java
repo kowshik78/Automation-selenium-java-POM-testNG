@@ -35,12 +35,12 @@
 
             WebElement billingButton=page.getInstance(RandomDropList.class).getBillingNextButton();takeScreenshot("Hello");
             page.getInstance(BasePage.class).jsExecuteScript(billingButton);
-            WebElement w1= page.getInstance(RandomDropList.class).geCheckoutPrice();s1=w1.getText();
+            WebElement w1= page.getInstance(RandomDropList.class).getCheckoutPrice();s1=w1.getText();
             System.out.println(s1);
 
-            WebElement placeOrderButton=page.getInstance(RandomDropList.class).getPlcaeOrderButton();takeScreenshot("Hello");
+            WebElement placeOrderButton=page.getInstance(RandomDropList.class).getPlaceOrderButton();takeScreenshot("Hello");
             page.getInstance(BasePage.class).jsExecuteScript(placeOrderButton);
-            WebElement w2= page.getInstance(RandomDropList.class).getpurchaseNumber();s2=w2.getText();
+            WebElement w2= page.getInstance(RandomDropList.class).getPurchaseNumber();s2=w2.getText();
             System.out.println(s2);
 
             WebElement continueShoppingButton=page.getInstance(RandomDropList.class).getContinueShopping();

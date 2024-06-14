@@ -18,19 +18,19 @@ public class ChangeBillingAddressTest extends BaseTest {
 
     @Test
     public void changeDefaultBillingAddressTest() throws Exception {
-        page.getInstance(ChangePassword.class).getbillingAddress().click();
+        page.getInstance(ChangePassword.class).getBillingAddress().click();
 
-        page.getInstance(ChangeBillingAddress.class).getstreet1().sendKeys(street1);
-        page.getInstance(ChangeBillingAddress.class).getcity().sendKeys(city);
-        WebElement RegionDropdown = page.getInstance(ChangeBillingAddress.class).getregion();
+        page.getInstance(ChangeBillingAddress.class).getStreet1().sendKeys(street1);
+        page.getInstance(ChangeBillingAddress.class).getCity().sendKeys(city);
+        WebElement RegionDropdown = page.getInstance(ChangeBillingAddress.class).getRegion();
         WebElementListHandle(RegionDropdown);
 
-        page.getInstance(ChangeBillingAddress.class).getzip().sendKeys(zip);
-        WebElement countryDropdown = page.getInstance(ChangeBillingAddress.class).getcountry();
+        page.getInstance(ChangeBillingAddress.class).getZip().sendKeys(zip);
+        WebElement countryDropdown = page.getInstance(ChangeBillingAddress.class).getCountry();
         WebElementListHandle(countryDropdown);
 
-        page.getInstance(ChangeBillingAddress.class).gettelephone().sendKeys(telephone);
-        page.getInstance(ChangeBillingAddress.class).getsave_button().click();
+        page.getInstance(ChangeBillingAddress.class).getTelephone().sendKeys(telephone);
+        page.getInstance(ChangeBillingAddress.class).getSaveButton().click();
         driver.findElement(By.xpath("/html/body/div[2]/header/div[2]/a/img")).click();
     }
 

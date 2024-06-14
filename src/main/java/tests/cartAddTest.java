@@ -35,20 +35,20 @@ public class cartAddTest extends BaseTest {
 
             page.getInstance(BasePage.class).jsExecuteScript(dressSizes.get(size));
             page.getInstance(BasePage.class).jsExecuteScript(dressColors.get(color));
-            page.getInstance(cartAdd.class).getAddtoCartBtn().click();
+            page.getInstance(cartAdd.class).getAddToCartBtn().click();
         }
         catch(Exception e)
-        {page.getInstance(cartAdd.class).getAddtoCartBtn().click();}
+        {page.getInstance(cartAdd.class).getAddToCartBtn().click();}
         Thread.sleep(5000);
     }
 
     @Test
     public void removeCart() throws Exception {
         WebDriverWait retryWait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        page.getInstance(cartAdd.class).getcartButton().click();
+        page.getInstance(cartAdd.class).getCartButton().click();
         Thread.sleep(3000);
 
-        List<WebElement> productsToDelete = page.getInstance(cartAdd.class).getproductdelete();
+        List<WebElement> productsToDelete = page.getInstance(cartAdd.class).getProductDelete();
         for (WebElement e : productsToDelete) {
             boolean clicked = false;
             while (!clicked) {

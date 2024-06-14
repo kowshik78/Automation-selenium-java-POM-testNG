@@ -1,29 +1,30 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.io.IOException;
 
 public class CreateAccountPage extends BasePage {
+
+    @FindBy(name = "firstname") private WebElement firstName;
+    @FindBy(name = "lastname") private WebElement lastName;
+    @FindBy(name = "email") private WebElement email;
+    @FindBy(name = "password") private WebElement password;
+    @FindBy(name = "password_confirmation") private WebElement confirmPassword;
+    @FindBy(xpath = "//*[@id=\"form-validate\"]/div/div[1]/button/span") private WebElement submitBtn;
+
     public CreateAccountPage(WebDriver driver) throws IOException {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    private final By firstName = By.name("firstname");
-    private final By lastName = By.name("lastname");
-    private final By email = By.name("email");
-    private final By password = By.name("password");
-    private final By confirmPassword = By.name("password_confirmation");
-    private final By Submit_btn = By.xpath("//*[@id=\"form-validate\"]/div/div[1]/button/span");
-
-
-    public WebElement getfirstName(){return elementWithWait(firstName,"visibility");}
-    public WebElement getlastName(){return elementWithWait(lastName,"visibility");}
-    public WebElement getemail(){return elementWithWait(email,"visibility");}
-    public WebElement getpassword(){return elementWithWait(password,"visibility");}
-    public WebElement getconfirmPassword(){return elementWithWait(confirmPassword,"visibility");}
-    public WebElement getSubmit_btn(){return elementWithWait(Submit_btn,"clickable");}
-
+    public WebElement getFirstName() {return elementWithWait(firstName, "visibility");}
+    public WebElement getLastName() {return elementWithWait(lastName, "visibility");}
+    public WebElement getEmail() {return elementWithWait(email, "visibility");}
+    public WebElement getPassword() {return elementWithWait(password, "visibility");}
+    public WebElement getConfirmPassword() {return elementWithWait(confirmPassword, "visibility");}
+    public WebElement getSubmitBtn() {return elementWithWait(submitBtn, "clickable");}
 }
