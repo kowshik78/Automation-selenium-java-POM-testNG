@@ -13,11 +13,11 @@
         public void randomWomenChoose() throws Exception {
             Actions actions = new Actions(driver);
             WebElement women= page.getInstance(RandomDropList.class).getHoverWomen();
-            actions.moveToElement(women).perform();takeScreenshot("Hello");
+            actions.moveToElement(women).perform();
 
             WebElement tops= page.getInstance(RandomDropList.class).getHoverTops();
-            actions.moveToElement(tops).perform();takeScreenshot("Hello");
-            page.getInstance(RandomDropList.class).getHoverTopsDropdown().click();takeScreenshot("Hello");
+            actions.moveToElement(tops).perform();
+            page.getInstance(RandomDropList.class).getHoverTopsDropdown().click();
             itemChoose();
 
             /*actions.moveToElement(women).perform();takeScreenshot("Hello");

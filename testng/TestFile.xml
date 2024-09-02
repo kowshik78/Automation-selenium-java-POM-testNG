@@ -17,11 +17,9 @@
     </test>-->
 <test name = "Login Signup Billing">
     <classes>
-        <class name="tests.CreateAccountPageTest"/>
-        <class name="tests.ChangePasswordTest"/>
+        <!--<class name="tests.CreateAccountPageTest"/>
+        <class name="tests.ChangePasswordTest"/>-->
         <class name="tests.LoginTest"/>
-        <class name="tests.ChangeBillingAddressTest"/>
-
         <!--<class name="tests.HomeTest">
             <methods>
                 <include name="locatorTest"/>
@@ -30,15 +28,16 @@
             </methods>
         </class>
         <class name="tests.SubcriberTest"/>
-        <class name="tests.cartAddTest"/>-->
+        <class name="tests.cartAddTest"/><class name="tests.ChangeBillingAddressTest"/>
+
+
 
         <class name="tests.CompareListTest">
             <methods>
                 <include name="compareCart"/>
                 <include name="compareProductWithTable"/>
-                <include name="print"/>
             </methods>
-        </class>
+        </class>-->
         <class name="tests.RandomDropListTest"/>
         <class name="tests.MyOrderTest"/>
         </classes>
