@@ -6,10 +6,13 @@
 <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
-   <!-- <test name = "Demo">
+<!--    <test name = "Demo">
         <classes>
-            <class name="tests.CompareListTest"/>
-            <class name="tests.RandomDropListTest"/>
+            <class name="tests.HomeTest">
+            <methods>
+                <include name="brokenLinkTest"/>
+            </methods>
+            </class>
         </classes>
     </test>-->
 <test name = "Login Signup Billing">
@@ -19,20 +22,21 @@
         <class name="tests.LoginTest"/>
         <class name="tests.ChangeBillingAddressTest"/>
 
-        <class name="tests.HomeTest">
+        <!--<class name="tests.HomeTest">
             <methods>
                 <include name="locatorTest"/>
-                <!--<include name="brokenLinkTest"/>-->
+                <include name="brokenLinkTest"/>
                 <include name="subscribeclickTest"/>
             </methods>
         </class>
         <class name="tests.SubcriberTest"/>
-        <class name="tests.cartAddTest"/>
+        <class name="tests.cartAddTest"/>-->
 
         <class name="tests.CompareListTest">
             <methods>
                 <include name="compareCart"/>
                 <include name="compareProductWithTable"/>
+                <include name="print"/>
             </methods>
         </class>
         <class name="tests.RandomDropListTest"/>

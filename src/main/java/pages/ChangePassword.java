@@ -16,7 +16,7 @@ public class ChangePassword extends BasePage {
     private final By newConfirmPass = By.name("password_confirmation");
     private final By save_btn = By.xpath("//*[@id=\"form-validate\"]/div/div[1]/button/span");
 
-    public WebElement   getchangePassbtn(){return elementWithWait(changePassbtn,"clickable");}
+    public WebElement getchangePassbtn(){return elementWithWait(changePassbtn,"clickable");}
     public WebElement getcurrentPass(){return elementWithWait(currentPass,"visibility");}
     public WebElement getnewPass(){return elementWithWait(newPass,"visibility");}
     public WebElement getnewConfirmPass(){return elementWithWait(newConfirmPass,"visibility");}

@@ -14,6 +14,7 @@ public class ChangePasswordTest extends BaseTest {
         page.getInstance(ChangePassword.class).getnewPass().sendKeys(newpassword);
         page.getInstance(ChangePassword.class).getnewConfirmPass().sendKeys(newpassword);
         page.getInstance(ChangePassword.class).getsave_btn().click();
+
     }
 
 }

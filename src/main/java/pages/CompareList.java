@@ -20,7 +20,7 @@ public class CompareList extends BasePage{
     private final By printButton=By.xpath("//*[text()='Print This Page']");
 
     private final By homeTitle=By.cssSelector("div > h1 > span");
-    private final By homePrice=By.className("price");
+    private final By homePrice=By.xpath("//*[@data-price-type=\"finalPrice\"]//*[@class='price']");
     private final By homeSKU=By.className("value");
     private final By homeDescription=By.cssSelector("#description > div");
 

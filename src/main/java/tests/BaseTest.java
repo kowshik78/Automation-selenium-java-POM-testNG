@@ -39,6 +39,7 @@ public class BaseTest {
             WebDriverManager.chromedriver().setup();
             //System.setProperty("webdriver.chrome.driver",resourcesRoot+"drivers\\chromedriver_126.exe");
             ChromeOptions options = new ChromeOptions();
+            
             options.addArguments("--headless");
             driver = new ChromeDriver(); //remove options to remove headless
             System.out.println("Chrome Browser is Selected");
