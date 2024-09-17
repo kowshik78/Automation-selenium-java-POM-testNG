@@ -10,7 +10,7 @@ public class Constant {
     public final static String confirmpassword = password;
 
     public final static String currentpassword = "1qazZAQ!";
-    public final static String newpassword = "1qazZAQ!!";
+    public final static String newpassword = "1qazZAQ!";
 
     public final static String loginname = email;
     public final static String loginpassword = newpassword;
@@ -24,7 +24,7 @@ public class Constant {
 
 
 
-    private static String randomGenerator(){
+    public static String randomGenerator(){
         String domain = "@yopmail.com";
         String characters= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         Random random = new Random();
