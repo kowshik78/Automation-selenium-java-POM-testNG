@@ -1,11 +1,14 @@
 package pages;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CreateAccountPage extends BasePage {
 
@@ -15,13 +18,23 @@ public class CreateAccountPage extends BasePage {
     @FindBy(name = "password") private WebElement password;
     @FindBy(name = "password_confirmation") private WebElement confirmPassword;
     @FindBy(xpath = "//*[@id=\"form-validate\"]/div/div[1]/button/span") private WebElement submitBtn;
-    @FindBy(xpath = "//*[@id=\"maincontent\"]/div[2]/div[1]/div[3]/div[2]/div/div[1]/p/text()[2]") private WebElement accountName;
-    //@FindBy(xpath = "//header/div[1]/div/ul/li[2]/div/ul/li[3]/a") private WebElement logoutToSignup;
-    //@FindBy(xpath = "(//*[@data-action=\"customer-menu-toggle\"])[1]") private WebElement promptToLogout;
+    @FindBy(xpath = "//div[@class='box-content']//p") private WebElement accountName;
 
     public CreateAccountPage(WebDriver driver) throws IOException {
         super(driver);
         PageFactory.initElements(driver, this);
+    }
+
+    public String printElementInfo() {
+        String outerHTML = accountName.getAttribute("outerHTML");
+        String emailPattern = "(?<=<br>)[^<]+(?=<br>)";
+        Pattern pattern = Pattern.compile(emailPattern);
+        Matcher matcher = pattern.matcher(outerHTML);
+        if (matcher.find()) {
+            return matcher.group().trim();}
+        else {
+            System.out.println("No email found in the provided HTML.");}
+        return null;
     }
 
     public WebElement getFirstName() {return elementWithWait(firstName, "visibility");}
@@ -31,7 +44,5 @@ public class CreateAccountPage extends BasePage {
     public WebElement getConfirmPassword() {return elementWithWait(confirmPassword, "visibility");}
     public WebElement getSubmitBtn() {return elementWithWait(submitBtn, "clickable");}
     public WebElement getAccountName() {return elementWithWait(accountName, "visibility");}
-    //public WebElement getLogoutToSignup() {return elementWithWait(logoutToSignup, "clickable");}
-    //public WebElement getPromptToLogout() {return elementWithWait(promptToLogout, "clickable");}
 }
 

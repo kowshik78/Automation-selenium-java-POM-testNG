@@ -4,21 +4,34 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ReadExcelSheet {
+    public static final String filePath = "resources/excel.xlsx";
+    public static final String sheetName = "Sheet1";
 
-    public static Object[][] getDataFromExcel(String filePath, String sheetName) throws IOException {
+    public static Object[][] getDataFromExcel(String filePath, String sheetName, String[] requiredColumns) throws IOException {
         try (FileInputStream fis = new FileInputStream(filePath);
              Workbook workbook = new XSSFWorkbook(fis)) {
             Sheet sheet = workbook.getSheet(sheetName);
             int rowCount = sheet.getPhysicalNumberOfRows();
+
+            Row headerRow = sheet.getRow(0);
+            Map<String, Integer> headerMap = new HashMap<>();
+            for (int j = 0; j < headerRow.getPhysicalNumberOfCells(); j++) {
+                String headerName = headerRow.getCell(j).getStringCellValue();
+                headerMap.put(headerName, j);
+            }
+
             Object[][] data = new Object[rowCount - 1][3];
 
             for (int i = 1; i < rowCount; i++) {
                 Row row = sheet.getRow(i);
-                data[i - 1][0] = row.getCell(0).toString();
-                data[i - 1][1] = row.getCell(1).toString();
-                data[i - 1][2] = row.getCell(2).toString();
+                for (int j = 0; j < requiredColumns.length; j++) {
+                    int colIndex = headerMap.get(requiredColumns[j]);
+                    data[i - 1][j] = row.getCell(colIndex).toString();
+                }
             }
             return data;
         }

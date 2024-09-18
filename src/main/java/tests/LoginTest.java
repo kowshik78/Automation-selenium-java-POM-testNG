@@ -1,11 +1,12 @@
 package tests;
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.Login;
+import utils.ReadExcelSheet;
 
+import java.io.IOException;
 import java.util.Objects;
 
 import static utils.Constant.loginname;
@@ -13,8 +14,6 @@ import static utils.Constant.loginpassword;
 
 public class LoginTest extends BaseTest {
     public boolean status;
-
-    @Test
     public void LoggedinTest() throws Exception {
         status = Objects.equals(driver.getCurrentUrl(), "https://magento.softwaretestingboard.com/customer/account/login/");
         if(!status){
@@ -30,5 +29,18 @@ public class LoginTest extends BaseTest {
             page.getInstance(Login.class).getLoginBtn().click();
 
         }
+    }
+
+
+    @DataProvider(name = "loginData")
+    public Object[][] getAccountData() throws IOException {
+        String[] requiredColumns = {"email", "password"};
+        return ReadExcelSheet.getDataFromExcel(ReadExcelSheet.filePath, ReadExcelSheet.sheetName, requiredColumns);
+    }
+    @Test(dataProvider = "loginData")
+    public void ExcelLoginTest(String email, String password) throws Exception {
+        page.getInstance(Login.class).getName().sendKeys(email);
+        page.getInstance(Login.class).getPassword().sendKeys(password);
+        page.getInstance(Login.class).getLoginBtn().click();
     }
 }

@@ -9,6 +9,7 @@
     <test name = "Demo">
         <classes>
             <class name="tests.CreateAccountPageTest"/>
+           <!-- <class name="tests.LoginTest"/>-->
         </classes>
     </test>
 <!--<test name = "Login Signup Billing">

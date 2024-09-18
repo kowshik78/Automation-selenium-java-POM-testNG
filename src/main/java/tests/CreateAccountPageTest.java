@@ -1,23 +1,16 @@
 package tests;
 
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.CreateAccountPage;
 import pages.HomePage;
 import org.testng.annotations.DataProvider;
 import java.io.IOException;
-import java.util.*;
-
 import utils.ReadExcelSheet;
 import static utils.Constant.*;
 
 public class CreateAccountPageTest extends BaseTest {
-    public Map<String, String> emailMap = new HashMap<>();
-    private static final String filePath = "resources/excel.xlsx";
-    private static final String sheetName = "Sheet1";
-
-/*    public void accountRegisterTest() throws Exception {
+    public void accountRegisterTest() throws Exception {
         page.getInstance(HomePage.class).getCreateAccountBtn().click();
         page.getInstance(CreateAccountPage.class).getFirstName().sendKeys(firstname);
         page.getInstance(CreateAccountPage.class).getLastName().sendKeys(lastname);
@@ -25,18 +18,20 @@ public class CreateAccountPageTest extends BaseTest {
         page.getInstance(CreateAccountPage.class).getPassword().sendKeys(password);
         page.getInstance(CreateAccountPage.class).getConfirmPassword().sendKeys(confirmpassword);
         page.getInstance(CreateAccountPage.class).getSubmitBtn().submit();
-    }*/
+    }
+
+
 
     @DataProvider(name = "accountData")
     public Object[][] getAccountData() throws IOException {
-        return ReadExcelSheet.getDataFromExcel(filePath, sheetName);
+        String[] requiredColumns = {"firstname", "lastname", "password"};
+        return ReadExcelSheet.getDataFromExcel(ReadExcelSheet.filePath, ReadExcelSheet.sheetName, requiredColumns);
     }
-
     @Test(dataProvider = "accountData")
-    public void accountRegisterTest(String firstname, String lastname, String password) throws Exception {
+    public void ExcelAccountRegisterTest(String firstname, String lastname, String password) throws Exception {
         String email = randomGenerator(); //emailMap.put(firstname, email);
         int currentRow = getCurrentRow(firstname);
-        ReadExcelSheet.writeEmailToExcel(filePath, sheetName, currentRow, email);
+        ReadExcelSheet.writeEmailToExcel(ReadExcelSheet.filePath, ReadExcelSheet.sheetName, currentRow, email);
 
         page.getInstance(HomePage.class).getCreateAccountBtn().click();
         page.getInstance(CreateAccountPage.class).getFirstName().sendKeys(firstname);
@@ -46,17 +41,15 @@ public class CreateAccountPageTest extends BaseTest {
         page.getInstance(CreateAccountPage.class).getConfirmPassword().sendKeys(password);
         page.getInstance(CreateAccountPage.class).getSubmitBtn().submit();
 
+        String e= page.getInstance(CreateAccountPage.class).printElementInfo();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(e, email, "Email does not match!");
         driver.get("https://magento.softwaretestingboard.com/customer/account/logout/");
-        //page.getInstance(CreateAccountPage.class).getPromptToLogout().click();
-        //page.getInstance(CreateAccountPage.class).getLogoutToSignup().click();
-        //WebElement e= page.getInstance(CreateAccountPage.class).getAccountName();
-        //System.out.println(email+"  "+ page.getInstance(CreateAccountPage.class).getAccountName());
-        //Assert.assertEquals(email, e.getText());
-        //driver.close();
 }
 
     private int getCurrentRow(String firstName) throws IOException {
-        Object[][] data = ReadExcelSheet.getDataFromExcel(CreateAccountPageTest.filePath, CreateAccountPageTest.sheetName);
+        String[] requiredColumns = {"firstname"};
+        Object[][] data = ReadExcelSheet.getDataFromExcel(ReadExcelSheet.filePath, ReadExcelSheet.sheetName, requiredColumns);
 
         for (int i = 0; i < data.length; i++) {
             if (data[i][0].equals(firstName)) {
