@@ -8,8 +8,9 @@
     </listeners>
     <test name = "Demo">
         <classes>
-            <class name="tests.CreateAccountPageTest"/>
-           <!-- <class name="tests.LoginTest"/>-->
+            <!--<class name="tests.CreateAccountPageTest"/>-->
+            <class name="tests.LoginTest"/>
+            <class name="tests.ChangeBillingAddressTest"/>
         </classes>
     </test>
 <!--<test name = "Login Signup Billing">

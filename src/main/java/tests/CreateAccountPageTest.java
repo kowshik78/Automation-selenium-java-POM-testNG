@@ -25,7 +25,7 @@ public class CreateAccountPageTest extends BaseTest {
     @DataProvider(name = "accountData")
     public Object[][] getAccountData() throws IOException {
         String[] requiredColumns = {"firstname", "lastname", "password"};
-        return ReadExcelSheet.getDataFromExcel(ReadExcelSheet.filePath, ReadExcelSheet.sheetName, requiredColumns);
+        return ReadExcelSheet.getDataFromExcel(ReadExcelSheet.filePath, ReadExcelSheet.sheetName, requiredColumns, null);
     }
     @Test(dataProvider = "accountData")
     public void ExcelAccountRegisterTest(String firstname, String lastname, String password) throws Exception {
@@ -49,7 +49,7 @@ public class CreateAccountPageTest extends BaseTest {
 
     private int getCurrentRow(String firstName) throws IOException {
         String[] requiredColumns = {"firstname"};
-        Object[][] data = ReadExcelSheet.getDataFromExcel(ReadExcelSheet.filePath, ReadExcelSheet.sheetName, requiredColumns);
+        Object[][] data = ReadExcelSheet.getDataFromExcel(ReadExcelSheet.filePath, ReadExcelSheet.sheetName, requiredColumns, null);
 
         for (int i = 0; i < data.length; i++) {
             if (data[i][0].equals(firstName)) {

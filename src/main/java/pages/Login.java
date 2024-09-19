@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class Login extends BasePage {
 
+
     @FindBy(name = "login[username]") private WebElement name;
     @FindBy(name = "login[password]") private WebElement password;
     @FindBy(xpath = "//*[@id=\"send2\"]/span") private WebElement loginBtn;

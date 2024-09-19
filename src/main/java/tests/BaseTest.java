@@ -57,14 +57,14 @@ public class BaseTest {
     }
 
 
-    public static void loginCheck() throws Exception {
+  /*  public static void loginCheck() throws Exception {
             LoginTest lg = new LoginTest();
             if(driver.findElement(By.className("authorization-link")).getText().equals("Sign In")) {
                 lg.LoggedinTest();
             }
             else{ System.out.println("Already logged in"); }
         }
-
+*/
     public void takeScreenshot(String stepName) {
         TakesScreenshot ts = (TakesScreenshot) driver;
         File source = ts.getScreenshotAs(OutputType.FILE);

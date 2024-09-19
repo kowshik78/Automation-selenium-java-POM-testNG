@@ -27,6 +27,7 @@ public class CreateAccountPage extends BasePage {
 
     public String printElementInfo() {
         String outerHTML = accountName.getAttribute("outerHTML");
+        System.out.println(outerHTML);
         String emailPattern = "(?<=<br>)[^<]+(?=<br>)";
         Pattern pattern = Pattern.compile(emailPattern);
         Matcher matcher = pattern.matcher(outerHTML);
