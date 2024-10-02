@@ -22,18 +22,25 @@ public class cartAddTest extends BaseTest {
     }
 
     @Test
-    public void addToCart() throws Exception {
+    public void addToCart(String excelSize) throws Exception {
         HomeTest home = new HomeTest();
         home.cardTest();
+        Random rand = new Random();
 
         try{
             List<WebElement> dressSizes=page.getInstance(cartAdd.class).getSize();
+            if (excelSize != null && !excelSize.trim().isEmpty()) {
+                boolean sizeMatched = false;
+                for (WebElement dressSize : dressSizes) {
+                    if (dressSize.getText().equalsIgnoreCase(excelSize)) {
+                        page.getInstance(BasePage.class).jsExecuteScript(dressSize);
+                        sizeMatched = true; break;}}}
+            else {
+                int size = rand.nextInt(dressSizes.size());
+                page.getInstance(BasePage.class).jsExecuteScript(dressSizes.get(size));
+            }
             List<WebElement> dressColors=page.getInstance(cartAdd.class).getColor();
-            Random rand = new Random();
-            int size = rand.nextInt(dressSizes.size());
             int color = rand.nextInt(dressColors.size());
-
-            page.getInstance(BasePage.class).jsExecuteScript(dressSizes.get(size));
             page.getInstance(BasePage.class).jsExecuteScript(dressColors.get(color));
             page.getInstance(cartAdd.class).getAddToCartBtn().click();
         }

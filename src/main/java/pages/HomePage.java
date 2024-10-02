@@ -11,7 +11,7 @@ import java.util.List;
 public class HomePage extends BasePage {
 
     @FindBy(xpath = "/html/body/div[2]/header/div[1]/div/ul/li[3]/a") private WebElement createAccountBtn;
-    @FindBy(xpath = "//*[@class=\"product-item-info\"]/a") private List<WebElement> cardSelector;
+    @FindBy(xpath = "//img[@class=\"product-image-photo\"]") private List<WebElement> cardSelector;
     @FindBy(tagName = "a") private List<WebElement> linkSelector;
     @FindBy(linkText = "Subscribe") private WebElement subscriberSelector;
 

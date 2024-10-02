@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.CreateAccountPage;
@@ -29,9 +30,9 @@ public class CreateAccountPageTest extends BaseTest {
     }
     @Test(dataProvider = "accountData")
     public void ExcelAccountRegisterTest(String firstname, String lastname, String password) throws Exception {
-        String email = randomGenerator(); //emailMap.put(firstname, email);
+        String email = randomGenerator();
         int currentRow = getCurrentRow(firstname);
-        ReadExcelSheet.writeEmailToExcel(ReadExcelSheet.filePath, ReadExcelSheet.sheetName, currentRow, email);
+        ReadExcelSheet.writeEmailToExcel(ReadExcelSheet.filePath, ReadExcelSheet.sheetName, currentRow, email, null);
 
         page.getInstance(HomePage.class).getCreateAccountBtn().click();
         page.getInstance(CreateAccountPage.class).getFirstName().sendKeys(firstname);
@@ -42,12 +43,13 @@ public class CreateAccountPageTest extends BaseTest {
         page.getInstance(CreateAccountPage.class).getSubmitBtn().submit();
 
         String e= page.getInstance(CreateAccountPage.class).printElementInfo();
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(e, email, "Email does not match!");
+        //SoftAssert softAssert = new SoftAssert();
+        //softAssert.assertEquals(e, email, "Email does not match!");
+        Assert.assertEquals(e, email);
         driver.get("https://magento.softwaretestingboard.com/customer/account/logout/");
 }
 
-    private int getCurrentRow(String firstName) throws IOException {
+    protected int getCurrentRow(String firstName) throws IOException {
         String[] requiredColumns = {"firstname"};
         Object[][] data = ReadExcelSheet.getDataFromExcel(ReadExcelSheet.filePath, ReadExcelSheet.sheetName, requiredColumns, null);
 

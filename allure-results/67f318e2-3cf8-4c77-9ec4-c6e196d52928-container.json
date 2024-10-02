@@ -1,1 +1,0 @@
-{"uuid":"67f318e2-3cf8-4c77-9ec4-c6e196d52928","name":"Framework | Project Management Test","children":["a2e9f89f-731e-49a7-ae8a-76f51c024935"],"befores":[{"name":"setupTest","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1726652862317,"stop":1726652867094}],"afters":[],"start":1726652862293,"stop":1726652912801}

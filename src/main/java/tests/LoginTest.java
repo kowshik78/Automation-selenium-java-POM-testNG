@@ -1,6 +1,8 @@
 package tests;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -8,6 +10,7 @@ import pages.Login;
 import utils.ReadExcelSheet;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Objects;
 
 import static utils.Constant.loginname;
@@ -47,4 +50,5 @@ public class LoginTest extends BaseTest {
             page.getInstance(Login.class).getPassword().sendKeys(password);
             page.getInstance(Login.class).getLoginBtn().click();
     }
+
 }

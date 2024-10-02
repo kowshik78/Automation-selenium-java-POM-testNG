@@ -2,48 +2,103 @@
 
     import org.openqa.selenium.WebElement;
     import org.openqa.selenium.interactions.Actions;
+    import org.testng.Assert;
+    import org.testng.annotations.DataProvider;
     import org.testng.annotations.Test;
+    import org.testng.asserts.SoftAssert;
     import pages.BasePage;
     import pages.RandomDropList;
+    import utils.ReadExcelSheet;
+
+    import java.io.IOException;
+    import java.util.Map;
+    import utils.log;
+
+
     public class RandomDropListTest extends BaseTest {
         public static String s1;
         public static String s2;
+        public Map<String, String> actualShippingAddress;
         cartAddTest cAdd = new cartAddTest();
-        @Test
+
         public void randomWomenChoose() throws Exception {
             Actions actions = new Actions(driver);
             WebElement women= page.getInstance(RandomDropList.class).getHoverWomen();
-            actions.moveToElement(women).perform();takeScreenshot("Hello");
+            actions.moveToElement(women).perform();
 
             WebElement tops= page.getInstance(RandomDropList.class).getHoverTops();
-            actions.moveToElement(tops).perform();takeScreenshot("Hello");
-            page.getInstance(RandomDropList.class).getHoverTopsDropdown().click();takeScreenshot("Hello");
+            actions.moveToElement(tops).perform();
+            page.getInstance(RandomDropList.class).getHoverTopsDropdown().click();
             itemChoose();
-
-            /*actions.moveToElement(women).perform();takeScreenshot("Hello");
-            WebElement bottoms= page.getInstance(RandomDropList.class).getHoverBottom();
-            actions.moveToElement(bottoms).perform();takeScreenshot("Hello");
-            page.getInstance(RandomDropList.class).getHoverBottomsDropdown().click();takeScreenshot("Hello");
-            itemChoose();*/
         }
         public void itemChoose() throws Exception {
-            cAdd.addToCart();
+            cAdd.addToCart(null);
+             performPostSelectionActions();
+        }
+
+        public void performPostSelectionActions() throws Exception {
             WebElement cartButton=page.getInstance(RandomDropList.class).getCartButton();takeScreenshot("Hello");
             page.getInstance(RandomDropList.class).jsExecuteScript(cartButton);
             WebElement proceedButton= page.getInstance(RandomDropList.class).getProceedButton();
             page.getInstance(BasePage.class).jsExecuteScript(proceedButton);
 
-            WebElement billingButton=page.getInstance(RandomDropList.class).getBillingNextButton();takeScreenshot("Hello");
-            page.getInstance(BasePage.class).jsExecuteScript(billingButton);
-            WebElement w1= page.getInstance(RandomDropList.class).getCheckoutPrice();s1=w1.getText();
-            System.out.println(s1);
+            Thread.sleep(30000);
+            actualShippingAddress = page.getInstance(RandomDropList.class).printElementInfo();
 
-            WebElement placeOrderButton=page.getInstance(RandomDropList.class).getPlaceOrderButton();takeScreenshot("Hello");
+            page.getInstance(RandomDropList.class).getRadioButton().click();
+            WebElement billingButton=page.getInstance(RandomDropList.class).getBillingNextButton();
+            page.getInstance(BasePage.class).jsExecuteScript(billingButton);
+            boolean status = false;
+            while (!status) {
+                try {
+                    WebElement w1= page.getInstance(RandomDropList.class).getCheckoutPrice();
+                    s1=w1.getText();log.info(s1);
+                    status = true;
+                } catch (Exception e) {throw new RuntimeException(e);}
+            }
+
+            WebElement placeOrderButton=page.getInstance(RandomDropList.class).getPlaceOrderButton();
             page.getInstance(BasePage.class).jsExecuteScript(placeOrderButton);
             WebElement w2= page.getInstance(RandomDropList.class).getPurchaseNumber();s2=w2.getText();
-            System.out.println(s2);
+            log.info(s2);
+            ReadExcelSheet.writeEmailToExcel(ReadExcelSheet.filePath, ReadExcelSheet.sheetName, 1, null, s2);
 
             WebElement continueShoppingButton=page.getInstance(RandomDropList.class).getContinueShopping();
             page.getInstance(BasePage.class).jsExecuteScript(continueShoppingButton);
         }
+
+
+
+
+        @DataProvider(name = "billingData")
+        public Object[][] getAccountData() throws IOException {
+            String[] requiredColumns = {"menu", "submenu", "subsubmenu", "size"};
+            return ReadExcelSheet.getDataFromExcel(ReadExcelSheet.filePath, ReadExcelSheet.sheetName, requiredColumns,2);
+        }
+        @Test(dataProvider = "billingData")
+        public void randomExcelWomenChoose(String menu, String submenu, String subsubmenu,String size) throws Exception {
+            Actions actions = new Actions(driver);
+            WebElement women= page.getInstance(RandomDropList.class).getMenuElement(menu);
+            actions.moveToElement(women).perform();
+
+            WebElement tops= page.getInstance(RandomDropList.class).getSubmenuElement(submenu);
+            actions.moveToElement(tops).perform();
+            page.getInstance(RandomDropList.class).getSubsubmenuElement(subsubmenu).click();
+            itemChoose(size);
+
+        }
+        public void itemChoose(String size) throws Exception {
+            cAdd.addToCart(size);
+            performPostSelectionActions();
+            Map<String, String> actualBillingAddress = ChangeBillingAddressTest.actualAddress;
+            SoftAssert softAssert = new SoftAssert();
+            for (String key : actualShippingAddress.keySet()) {
+                log.info(key);
+                log.info(actualBillingAddress.get(key));
+                //softAssert.assertEquals(actualShippingAddress.get(key), actualBillingAddress.get(key), key + " does not match!");
+                Assert.assertEquals(actualShippingAddress.get(key), actualBillingAddress.get(key));
+            }
+            //softAssert.assertAll();
+        }
+
     }

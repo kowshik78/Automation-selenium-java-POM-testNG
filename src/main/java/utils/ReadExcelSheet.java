@@ -38,7 +38,7 @@ public class ReadExcelSheet {
         }
     }
 
-    public static void writeEmailToExcel(String filePath, String sheetName, int rowNumber, String email) throws IOException {
+    public static void writeEmailToExcel(String filePath, String sheetName, int rowNumber, String email, String orderNumber) throws IOException {
         try (FileInputStream fis = new FileInputStream(filePath);
              Workbook workbook = new XSSFWorkbook(fis)) {
             Sheet sheet = workbook.getSheet(sheetName);
@@ -46,6 +46,9 @@ public class ReadExcelSheet {
 
             Cell emailCell = row.createCell(3);
             emailCell.setCellValue(email);
+            Cell orderNumberCell = row.createCell(14);
+            orderNumberCell.setCellValue(orderNumber);
+
             try (FileOutputStream fos = new FileOutputStream(filePath)) {
                 workbook.write(fos);
             }

@@ -20,7 +20,6 @@ public class HomeTest extends BaseTest{
         System.out.println("Page title is: "+driver.getTitle());
         System.out.println("Current url is: "+driver.getCurrentUrl());
         softAssert.assertEquals(driver.getCurrentUrl(),"BASE_URL");
-
     }
 
     @Test
