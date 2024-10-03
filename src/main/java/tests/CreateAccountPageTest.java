@@ -8,9 +8,11 @@ import pages.HomePage;
 import org.testng.annotations.DataProvider;
 import java.io.IOException;
 import utils.ReadExcelSheet;
-import static utils.Constant.*;
+import utils.log;
 
+import static utils.Constant.*;
 public class CreateAccountPageTest extends BaseTest {
+
     public void accountRegisterTest() throws Exception {
         page.getInstance(HomePage.class).getCreateAccountBtn().click();
         page.getInstance(CreateAccountPage.class).getFirstName().sendKeys(firstname);
@@ -42,10 +44,12 @@ public class CreateAccountPageTest extends BaseTest {
         page.getInstance(CreateAccountPage.class).getConfirmPassword().sendKeys(password);
         page.getInstance(CreateAccountPage.class).getSubmitBtn().submit();
 
-        String e= page.getInstance(CreateAccountPage.class).printElementInfo();
-        //SoftAssert softAssert = new SoftAssert();
-        //softAssert.assertEquals(e, email, "Email does not match!");
-        Assert.assertEquals(e, email);
+        String e= page.getInstance(CreateAccountPage.class).printElementInfo(); System.out.println(e);
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(e, email, "Email does not match!");
+        softAssert.assertAll();
+        log.info("String"+e);
+        log.info("String2"+email);
         driver.get("https://magento.softwaretestingboard.com/customer/account/logout/");
 }
 

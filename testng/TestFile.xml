@@ -3,10 +3,15 @@
 
 <suite name="Framework | Project Management Test" allow-return-values="true">
     <parameter name ="browser" value="chrome"/>
-<listeners>
+    <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
     <test name = "Demo">
+        <!--<groups>
+            <run>
+                <include name="excel"> </include>
+            </run>
+        </groups>-->
         <classes>
             <class name="tests.CreateAccountPageTest"/>
             <class name="tests.LoginTest"/>

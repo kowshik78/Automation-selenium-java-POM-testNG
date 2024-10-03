@@ -40,7 +40,22 @@ public class RandomDropList extends BasePage {
     public Map<String, String> printElementInfo() {
         Map<String, String> shippingAddressInfo = new HashMap<>();
         WebElement shippingAddressElement = elementWithWait(shippingAddress, "visibility");
-        String outerHTML = shippingAddressElement.getAttribute("outerHTML");
+        String fullText = shippingAddressElement.getText();
+        String[] lines = fullText.split("\\n");
+
+        shippingAddressInfo.put("street1", lines[1].trim());
+
+        String[] cityStateZip = lines[2].split(", ");
+        shippingAddressInfo.put("city", cityStateZip[0].trim());
+
+        String[] stateZip = cityStateZip[1].split(" ");
+        shippingAddressInfo.put("state", stateZip[0].trim());
+        shippingAddressInfo.put("zipcode", stateZip[1].trim());
+
+        shippingAddressInfo.put("country", lines[3].trim());
+        shippingAddressInfo.put("telephone", lines[4].trim());
+
+        /*String outerHTML = shippingAddressElement.getAttribute("outerHTML");
         String shippingAddressPattern = "(?<name>[A-Za-z0-9 ]+)<!-- /ko -->[^<]*<br>\\s*" + "(?<street>[^<]+)<br>\\s*" + "(?<city>[^,]+),\\s*" +
                 "<span[^>]*>(?<state>[^<]+)</span>[^<]*" + "(?<zipcode>[^<]+)<br>\\s*" + "(?<country>[^<]+)<br>[^<]*" + "href=\"tel:[^\"]+\">(?<phone>[^\"]+)</a>";
 
@@ -53,7 +68,7 @@ public class RandomDropList extends BasePage {
             shippingAddressInfo.put("zipcode", matcher.group("zipcode").trim());
             shippingAddressInfo.put("country", matcher.group("country").trim());
             shippingAddressInfo.put("telephone", matcher.group("phone").trim());
-        }
+        }*/
         return shippingAddressInfo;
     }
 

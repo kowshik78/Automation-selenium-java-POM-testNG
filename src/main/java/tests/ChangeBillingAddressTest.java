@@ -83,13 +83,12 @@ public class ChangeBillingAddressTest extends BaseTest {
         page.getInstance(ChangeBillingAddress.class).getTelephone().sendKeys(telephone);
         page.getInstance(ChangeBillingAddress.class).getSaveButton().click();
 
-        actualAddress = page.getInstance(ChangeBillingAddress.class).printElementInfo();
-        //SoftAssert softAssert = new SoftAssert();
+        actualAddress = page.getInstance(ChangeBillingAddress.class).printElementInfo(); System.out.println(actualAddress+"____"+expectedAddress);
+        SoftAssert softAssert = new SoftAssert();
         for (String key : actualAddress.keySet()) {
-            //softAssert.assertEquals(actualAddress.get(key), actualAddress.get(key), key + " does not match!");
-            Assert.assertEquals(actualAddress.get(key), actualAddress.get(key));
+            softAssert.assertEquals(actualAddress.get(key), expectedAddress.get(key), key + " does not match!");
         }
-        //softAssert.assertAll();
+        softAssert.assertAll();
 
     }
 

@@ -1,0 +1,1 @@
+{"uuid":"a937e61a-75bc-4193-9ec9-a3c4bb5c7478","name":"tests.RandomDropListTest","children":["138fa543-419b-4cf3-a865-2e2455399c0b"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1727933360249,"stop":1727933360252}],"afters":[],"start":1727933358233,"stop":1727933360354}

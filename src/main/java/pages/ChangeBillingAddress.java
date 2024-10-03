@@ -43,8 +43,22 @@ public class ChangeBillingAddress extends BasePage {
     public Map<String, String> printElementInfo() {
         Map<String, String> addressInfo = new HashMap<>();
         WebElement billingAddressElement = elementWithWait(assertAddress, "visibility");
-        String outerHTML = billingAddressElement.getAttribute("outerHTML");
+        String fullText = billingAddressElement.getText();
+        String[] lines = fullText.split("\\n");
 
+        addressInfo.put("street1", lines[1].trim());
+
+        String[] cityStateZip = lines[2].split(", ");
+        addressInfo.put("city", cityStateZip[0].trim());
+        addressInfo.put("state", cityStateZip[1].trim());
+        addressInfo.put("zipcode", cityStateZip[2].trim());
+
+        addressInfo.put("country", lines[3].trim());
+
+        String phoneLine = lines[4].trim();
+        addressInfo.put("telephone", phoneLine.substring(3).trim());
+/*
+        String outerHTML = billingAddressElement.getAttribute("outerHTML");
         String addressPattern = "(?<name>[^<]+)<br>\\s*(?<line2>[^<]+)<br>\\s*(?<city>[^,]+),\\s*(?<state>[^,]+),\\s*(?<zipcode>[^<]+)<br>\\s*(?<country>[^<]+)<br>\\s*T:\\s*<a[^>]+>(?<phone>[^<]+)</a>";
         Pattern pattern = Pattern.compile(addressPattern);
         Matcher matcher = pattern.matcher(outerHTML);
@@ -59,6 +73,7 @@ public class ChangeBillingAddress extends BasePage {
             System.out.println("No address information found in the provided HTML.");
         }
 
+*/
         return addressInfo;
     }
 }

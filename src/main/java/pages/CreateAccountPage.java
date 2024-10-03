@@ -26,15 +26,19 @@ public class CreateAccountPage extends BasePage {
     }
 
     public String printElementInfo() {
-        String outerHTML = accountName.getAttribute("outerHTML");
-        String emailPattern = "(?<=<br>)[^<]+(?=<br>)";
-        Pattern pattern = Pattern.compile(emailPattern);
-        Matcher matcher = pattern.matcher(outerHTML);
-        if (matcher.find()) {
-            return matcher.group().trim();}
-        else {
-            System.out.println("No email found in the provided HTML.");}
-        return null;
+        String fullText = accountName.getText();
+        String[] parts = fullText.split("\\n");
+        return parts[1].trim();
+
+//        String outerHTML = accountName.getAttribute("outerHTML");
+//        String emailPattern = "(?<=<br>)[^<]+(?=<br>)";
+//        Pattern pattern = Pattern.compile(emailPattern);
+//        Matcher matcher = pattern.matcher(outerHTML);
+//        if (matcher.find()) {
+//            return matcher.group().trim();}
+//        else {
+//            System.out.println("No email found in the provided HTML.");}
+//        return null;
     }
 
     public WebElement getFirstName() {return elementWithWait(firstName, "visibility");}
