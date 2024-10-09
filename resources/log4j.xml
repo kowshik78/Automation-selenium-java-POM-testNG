@@ -5,8 +5,8 @@
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
         </Console>
         <RollingFile name="roll-by-time"
-                     fileName="Logs/${date:dd-MM-yyyy}/${date:dd-MM-yyyy_HH-mm-ss}.log"
-                     filePattern="Logs/${date:dd-MM-yyyy}/%d{HH-mm-ss}.log"
+                     fileName="C:\\Users\\kowshik.saha\\IdeaProjects\\Magento\\screenshots\\${date:dd-MM-yyyy}/${date:dd-MM-yyyy_HH-mm-ss}.log"
+                     filePattern="C:\\Users\\kowshik.saha\\IdeaProjects\\Magento\\screenshots\\${date:dd-MM-yyyy}/%d{HH-mm-ss}.log"
                      ignoreExceptions="false"
                      append="true">
             <PatternLayout>
